@@ -76,7 +76,7 @@
     width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
     background: var(--marine); color: var(--accent);
     display: flex; align-items: center; justify-content: center;
-    font-size: 1rem;
+    font-size: .68rem; font-weight: 700; letter-spacing: .02em;
   }
   .modal-close {
     position: absolute; top: .7rem; right: .9rem;
@@ -132,9 +132,9 @@
   .btn-primary { background: var(--accent); color: var(--marine); }
   .btn-primary:hover { background: var(--accent-dark); color: var(--blanc); }
   .btn-ghost {
-    color: var(--blanc); border: 1.5px solid rgba(255,255,255,.4);
+    background: var(--blanc); color: var(--marine); border: 1.5px solid var(--blanc);
   }
-  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .btn-ghost:hover { background: var(--accent); border-color: var(--accent); color: var(--marine); }
 
   .hero-photo {
     flex: 0 0 auto; width: 170px; height: 170px;
@@ -176,13 +176,14 @@
   }
   .tab-bar::-webkit-scrollbar { display: none; }
   .tab-btn {
-    flex: 0 0 auto;
+    flex: 1 1 0;
     background: none; border: none; cursor: pointer;
     font-family: "Inter", sans-serif;
-    padding: .8rem 1.3rem;
+    padding: .8rem .6rem;
     font-size: 1.08rem; font-weight: 700; color: var(--gris);
     border-bottom: 3px solid transparent;
     white-space: nowrap;
+    text-align: center;
     transition: .15s;
   }
   .tab-btn:hover { color: var(--marine); }
@@ -211,7 +212,6 @@
   .about-card {
     background: var(--blanc);
     border: 1px solid var(--gris-clair);
-    border-left: 4px solid var(--accent);
     border-radius: var(--radius);
     padding: 1.3rem 1.5rem;
   }
@@ -261,7 +261,7 @@
     font-size: .95rem;
   }
   .niveau-item:last-child { border-bottom: none; }
-  .niveau-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: .5rem; }
+  .niveau-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-dark); flex-shrink: 0; margin-top: .5rem; }
 
   /* ORGA */
   .orga-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
@@ -269,10 +269,7 @@
     background: var(--blanc);
     border-radius: var(--radius);
     padding: 1.2rem 1.4rem;
-    border-top: 3px solid var(--accent);
-    border-left: 1px solid var(--gris-clair);
-    border-right: 1px solid var(--gris-clair);
-    border-bottom: 1px solid var(--gris-clair);
+    border: 1px solid var(--gris-clair);
   }
   .orga-card h3 { color: var(--marine); font-size: 1rem; margin-bottom: .3rem; }
   .orga-card p { color: var(--gris); font-size: .9rem; }
@@ -330,6 +327,7 @@
     .hero p.lead { max-width: none; }
     .cta-row { justify-content: center; }
     .stats-inner { gap: 2rem; }
+    .tab-btn { flex: 0 0 auto; padding: .8rem 1.1rem; }
   }
 </style>
 </head>
@@ -339,7 +337,7 @@
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-text">
-      <span class="eyebrow">Maths &amp; Physique-Chimie</span>
+      <span class="eyebrow">Cours de Maths &amp; Physique-Chimie</span>
       <h1>Comprendre les maths et la physique-chimie, <em>pour de bon</em>.</h1>
       <p class="lead">Étudiant en école d'ingénieur à SeaTech Toulon, je vous accompagne du collège à la terminale, en visio toute l'année ou en présentiel selon les périodes.</p>
       <div class="cta-row">
@@ -500,7 +498,7 @@
         <span class="modal-icon">@</span> Par e-mail (Gmail)
       </a>
       <a class="modal-choice" href="sms:+33749055015">
-        <span class="modal-icon">&#9993;</span> Par message (SMS)
+        <span class="modal-icon">SMS</span> Par message (SMS)
       </a>
     </div>
   </div>
