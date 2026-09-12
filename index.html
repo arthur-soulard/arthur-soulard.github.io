@@ -41,30 +41,49 @@
 
   .wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.4rem; }
 
-  /* NAV */
-  header.nav {
-    position: sticky; top: 0; z-index: 50;
-    background: var(--marine);
-    border-bottom: 1px solid rgba(79,179,172,.25);
+  .btn { cursor: pointer; font-family: "Inter", sans-serif; }
+
+  /* MODAL CONTACT */
+  .modal-overlay {
+    display: none; position: fixed; inset: 0; z-index: 100;
+    background: rgba(13,36,56,.6);
+    align-items: center; justify-content: center;
+    padding: 1.4rem;
   }
-  .nav-inner {
-    max-width: 1080px; margin: 0 auto; padding: .8rem 1.4rem;
-    display: flex; align-items: center; justify-content: space-between;
-    gap: 1rem;
+  .modal-overlay.open { display: flex; }
+  .modal-box {
+    background: var(--blanc); border-radius: var(--radius);
+    max-width: 360px; width: 100%;
+    padding: 1.8rem 1.6rem;
+    text-align: center;
+    position: relative;
   }
-  .nav-brand {
-    display: flex; align-items: center; gap: .6rem;
-    color: var(--blanc); font-weight: 700; font-size: 1rem;
-    text-decoration: none; white-space: nowrap;
+  .modal-box h3 {
+    color: var(--marine); font-size: 1.2rem; margin-bottom: .3rem;
   }
-  .nav-brand .dot { width: 9px; height: 9px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
-  .nav-cta {
-    background: var(--accent); color: var(--marine);
-    padding: .5rem 1rem; border-radius: 30px;
-    font-size: .85rem; font-weight: 700; text-decoration: none;
-    white-space: nowrap;
+  .modal-box p.modal-sub { color: var(--gris); font-size: .9rem; margin-bottom: 1.4rem; }
+  .modal-choices { display: flex; flex-direction: column; gap: .7rem; }
+  .modal-choice {
+    display: flex; align-items: center; gap: .7rem;
+    padding: .8rem 1rem; border-radius: 10px;
+    border: 1.5px solid var(--gris-clair);
+    text-decoration: none; color: var(--marine);
+    font-weight: 700; font-size: .95rem;
+    transition: .15s;
   }
-  .nav-cta:hover { background: var(--accent-dark); color: var(--blanc); }
+  .modal-choice:hover { border-color: var(--accent); background: var(--creme); }
+  .modal-choice .modal-icon {
+    width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
+    background: var(--marine); color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem;
+  }
+  .modal-close {
+    position: absolute; top: .7rem; right: .9rem;
+    background: none; border: none; cursor: pointer;
+    font-size: 1.3rem; line-height: 1; color: var(--gris);
+  }
+  .modal-close:hover { color: var(--marine); }
 
   /* HERO */
   .hero {
@@ -160,9 +179,9 @@
     flex: 0 0 auto;
     background: none; border: none; cursor: pointer;
     font-family: "Inter", sans-serif;
-    padding: .7rem 1.1rem;
-    font-size: .88rem; font-weight: 600; color: var(--gris);
-    border-bottom: 2px solid transparent;
+    padding: .8rem 1.3rem;
+    font-size: 1.08rem; font-weight: 700; color: var(--gris);
+    border-bottom: 3px solid transparent;
     white-space: nowrap;
     transition: .15s;
   }
@@ -218,6 +237,15 @@
   }
   .card h3 { color: var(--marine); font-size: 1.02rem; font-weight: 700; margin-bottom: .35rem; }
   .card p { color: var(--gris); font-size: .87rem; }
+  .card h3.matiere-titre {
+    font-family: "Fraunces", serif;
+    font-size: clamp(1.35rem, 3.5vw, 1.7rem);
+    margin-bottom: .5rem;
+  }
+  .card h3.paiement-titre {
+    font-size: 1.15rem;
+    margin-bottom: .4rem;
+  }
 
   /* NIVEAUX */
   .niveaux-list {
@@ -227,13 +255,13 @@
     overflow: hidden;
   }
   .niveau-item {
-    display: flex; align-items: center; gap: .9rem;
+    display: flex; align-items: flex-start; gap: .9rem;
     padding: .85rem 1.3rem;
     border-bottom: 1px solid var(--gris-clair);
     font-size: .95rem;
   }
   .niveau-item:last-child { border-bottom: none; }
-  .niveau-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+  .niveau-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; margin-top: .5rem; }
 
   /* ORGA */
   .orga-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
@@ -307,13 +335,6 @@
 </head>
 <body>
 
-<header class="nav">
-  <div class="nav-inner">
-    <a class="nav-brand" href="#top"><span class="dot"></span>Arthur Soulard</a>
-    <a class="nav-cta" href="#contact">Me contacter</a>
-  </div>
-</header>
-
 <div id="top"></div>
 <section class="hero">
   <div class="hero-inner">
@@ -322,8 +343,8 @@
       <h1>Comprendre les maths et la physique-chimie, <em>pour de bon</em>.</h1>
       <p class="lead">Étudiant en école d'ingénieur à SeaTech Toulon, je vous accompagne du collège à la terminale, en visio toute l'année ou en présentiel selon les périodes.</p>
       <div class="cta-row">
-        <a class="btn btn-primary" href="#contact">Réserver un cours</a>
-        <a class="btn btn-ghost" href="#tabs">Voir les tarifs</a>
+        <button type="button" class="btn btn-primary" onclick="ouvrirContact()">Me contacter</button>
+        <button type="button" class="btn btn-ghost" onclick="allerAuxTarifs()">Voir les tarifs</button>
       </div>
     </div>
     <div class="hero-photo">
@@ -339,7 +360,7 @@
       <div class="stat-label">Tarif de départ / h</div>
     </div>
     <div>
-      <div class="stat-num">6ᵉ → Tle</div>
+      <div class="stat-num">6ᵉ → Terminale</div>
       <div class="stat-label">Niveaux accompagnés</div>
     </div>
   </div>
@@ -364,7 +385,7 @@
       <div class="about-card">
         <p>Originaire de Treize-Septiers, j'ai intégré SeaTech Toulon en 1ère année après une prépa MP au lycée Saint-François d'Assise.</p>
         <p>Passionné par les mathématiques et la physique, j'ai toujours aimé expliquer, reformuler et trouver la bonne approche pour chaque élève. Titulaire d'un bac mention Bien avec spécialités Maths &amp; Physique-Chimie, je connais bien les programmes du lycée.</p>
-        <p>Délégué de classe 4 années consécutives, je suis à l'écoute et patient. Mon objectif : vous aider à vraiment comprendre les notions pour décrocher une meilleure note au brevet ou au bac — ou simplement gagner en confiance sur la matière.</p>
+        <p>Délégué de classe 4 années consécutives, je suis à l'écoute et patient. Mon objectif : vous aider à vraiment comprendre les notions pour décrocher une meilleure note au brevet ou au bac, ou simplement gagner en confiance sur la matière.</p>
       </div>
     </div>
 
@@ -375,13 +396,11 @@
       </div>
       <div class="cards-grid">
         <div class="card">
-          <div class="icon">&#8721;</div>
-          <h3>Mathématiques</h3>
+          <h3 class="matiere-titre">Mathématiques</h3>
           <p>Exercices personnalisés, explications de cours, méthodes et astuces.</p>
         </div>
         <div class="card">
-          <div class="icon">&#9883;</div>
-          <h3>Physique-Chimie</h3>
+          <h3 class="matiere-titre">Physique-Chimie</h3>
           <p>Exercices personnalisés, explications de cours, méthodes et astuces.</p>
         </div>
       </div>
@@ -393,10 +412,10 @@
         <h2>Niveaux accompagnés</h2>
       </div>
       <div class="niveaux-list">
-        <div class="niveau-item"><span class="niveau-dot"></span>6ᵉ, 5ᵉ, 4ᵉ, 3ᵉ — préparation au Brevet</div>
-        <div class="niveau-item"><span class="niveau-dot"></span>Seconde</div>
-        <div class="niveau-item"><span class="niveau-dot"></span>Première</div>
-        <div class="niveau-item"><span class="niveau-dot"></span>Terminale — préparation au Bac</div>
+        <div class="niveau-item"><span class="niveau-dot"></span>6ᵉ, 5ᵉ, 4ᵉ, 3ᵉ (préparation au Brevet)</div>
+        <div class="niveau-item"><span class="niveau-dot"></span>Seconde générale et technologique</div>
+        <div class="niveau-item"><span class="niveau-dot"></span>Première : enseignement de spécialité Mathématiques, enseignement de spécialité Physique-Chimie, ainsi que l'épreuve anticipée de mathématiques (tronc commun)</div>
+        <div class="niveau-item"><span class="niveau-dot"></span>Terminale : enseignement de spécialité Mathématiques, enseignement de spécialité Physique-Chimie (préparation au Bac)</div>
       </div>
     </div>
 
@@ -454,18 +473,15 @@
       </div>
       <div class="cards-grid cols-3">
         <div class="card">
-          <div class="icon">C</div>
-          <h3>CESU</h3>
+          <h3 class="paiement-titre">CESU</h3>
           <p>Chèque Emploi Service Universel</p>
         </div>
         <div class="card">
-          <div class="icon">V</div>
-          <h3>Virement</h3>
+          <h3 class="paiement-titre">Virement</h3>
           <p>Virement bancaire classique</p>
         </div>
         <div class="card">
-          <div class="icon">E</div>
-          <h3>Espèces</h3>
+          <h3 class="paiement-titre">Espèces</h3>
           <p>Paiement en main propre</p>
         </div>
       </div>
@@ -473,6 +489,22 @@
 
   </div>
 </section>
+
+<div class="modal-overlay" id="modalContact">
+  <div class="modal-box">
+    <button type="button" class="modal-close" onclick="fermerContact()" aria-label="Fermer">&times;</button>
+    <h3>Me contacter</h3>
+    <p class="modal-sub">Choisissez votre moyen de contact préféré.</p>
+    <div class="modal-choices">
+      <a class="modal-choice" href="https://mail.google.com/mail/?view=cm&fs=1&to=arthursoulard1312@gmail.com&su=Cours%20particuliers" target="_blank" rel="noopener">
+        <span class="modal-icon">@</span> Par e-mail (Gmail)
+      </a>
+      <a class="modal-choice" href="sms:+33749055015">
+        <span class="modal-icon">&#9993;</span> Par message (SMS)
+      </a>
+    </div>
+  </div>
+</div>
 
 <footer id="contact">
   <div class="wrap">
@@ -489,7 +521,6 @@
       <div class="footer-col">
         <h4>Navigation</h4>
         <a href="#top">Accueil</a>
-        <a href="#tabs">Présentation, tarifs, organisation</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -499,13 +530,34 @@
 </footer>
 
 <script>
+  function activerOnglet(nom) {
+    document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
+    document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+    document.querySelector('.tab-btn[data-tab="' + nom + '"]').classList.add('active');
+    document.getElementById('panel-' + nom).classList.add('active');
+  }
+
   document.querySelectorAll('.tab-btn').forEach(function(btn){
     btn.addEventListener('click', function(){
-      document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
-      document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
-      btn.classList.add('active');
-      document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
+      activerOnglet(btn.dataset.tab);
     });
+  });
+
+  function allerAuxTarifs() {
+    activerOnglet('tarifs');
+    document.getElementById('tabs').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function ouvrirContact() {
+    document.getElementById('modalContact').classList.add('open');
+  }
+
+  function fermerContact() {
+    document.getElementById('modalContact').classList.remove('open');
+  }
+
+  document.getElementById('modalContact').addEventListener('click', function(e){
+    if (e.target === this) fermerContact();
   });
 </script>
 
