@@ -129,8 +129,8 @@
     border-radius: 30px; font-size: .92rem; font-weight: 700;
     text-decoration: none; transition: .15s;
   }
-  .btn-primary { background: var(--accent); color: var(--marine); }
-  .btn-primary:hover { background: var(--accent-dark); color: var(--blanc); }
+  .btn-primary { background: var(--accent); color: var(--marine); border: 1.5px solid var(--accent); }
+  .btn-primary:hover { background: var(--accent-dark); color: var(--blanc); border-color: var(--accent-dark); }
   .btn-ghost {
     background: var(--blanc); color: var(--marine); border: 1.5px solid var(--blanc);
   }
@@ -223,7 +223,7 @@
   }
   .cards-grid.cols-3 { grid-template-columns: repeat(3, 1fr); }
   .card {
-    background: var(--creme);
+    background: var(--blanc);
     border: 1px solid var(--gris-clair);
     border-radius: var(--radius);
     padding: 1.4rem 1.2rem;
@@ -261,7 +261,7 @@
     font-size: .95rem;
   }
   .niveau-item:last-child { border-bottom: none; }
-  .niveau-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-dark); flex-shrink: 0; margin-top: .5rem; }
+  .niveau-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--marine); flex-shrink: 0; margin-top: .5rem; }
 
   /* ORGA */
   .orga-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
