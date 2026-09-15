@@ -10,13 +10,17 @@
 <meta property="og:description" content="Cours particuliers de Maths et Physique-Chimie, du collège à la terminale. Dès 20 €/h.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://arthur-soulard.github.io/">
-<meta property="og:image" content="https://arthur-soulard.github.io/img/hero.jpg">
+<meta property="og:image" content="https://arthur-soulard.github.io/img/og-cover.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Arthur Soulard — cours particuliers de maths et physique-chimie">
 <meta property="og:locale" content="fr_FR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Arthur Soulard — Cours particuliers Maths & Physique-Chimie">
 <meta name="twitter:description" content="Cours particuliers de Maths et Physique-Chimie, du collège à la terminale. Dès 20 €/h.">
-<meta name="twitter:image" content="https://arthur-soulard.github.io/img/hero.jpg">
-<meta name="robots" content="index, follow">
+<meta name="twitter:image" content="https://arthur-soulard.github.io/img/og-cover.jpg">
+<meta name="robots" content="index, follow, noimageindex, max-image-preview:none">
+<meta name="googlebot" content="index, follow, noimageindex, max-image-preview:none">
 <link rel="canonical" href="https://arthur-soulard.github.io/">
 <meta name="google-site-verification" content="41PgtaEMhJLDMlWhQVJV4a-S8M6sK89P17dyRRVTLLc" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -178,13 +182,61 @@
 
   /* TABS */
   .tabs-section { padding: 3rem 0 4rem; }
+  .tab-bar-wrap { position: relative; margin-bottom: 2rem; }
   .tab-bar {
     display: flex; gap: .4rem; overflow-x: auto;
-    padding-bottom: .3rem; margin-bottom: 2rem;
+    padding-bottom: .3rem;
     border-bottom: 1px solid var(--gris-clair);
     scrollbar-width: none;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
   }
   .tab-bar::-webkit-scrollbar { display: none; }
+
+  /* Indication de defilement : degrades sur les bords */
+  .tab-bar-wrap::before,
+  .tab-bar-wrap::after {
+    content: ""; position: absolute; top: 0; bottom: 1px;
+    width: 54px; pointer-events: none; z-index: 2;
+    opacity: 0; transition: opacity .2s ease;
+  }
+  .tab-bar-wrap::before {
+    left: 0;
+    background: linear-gradient(to right, var(--creme) 30%, rgba(247,245,240,0));
+  }
+  .tab-bar-wrap::after {
+    right: 0;
+    background: linear-gradient(to left, var(--creme) 30%, rgba(247,245,240,0));
+  }
+  .tab-bar-wrap.peut-gauche::before,
+  .tab-bar-wrap.peut-droite::after { opacity: 1; }
+
+  /* Fleches cliquables */
+  .tab-arrow {
+    position: absolute; top: 50%; margin-top: -19px;
+    width: 30px; height: 30px; border-radius: 50%;
+    border: 1px solid var(--gris-clair); background: var(--blanc);
+    color: var(--marine); font-size: 1.05rem; line-height: 1;
+    display: none; align-items: center; justify-content: center;
+    cursor: pointer; z-index: 3; padding: 0;
+    box-shadow: 0 2px 8px rgba(13,36,56,.16);
+  }
+  .tab-arrow:hover { border-color: var(--accent); color: var(--accent-dark); }
+  .tab-arrow-prev { left: 0; }
+  .tab-arrow-next { right: 0; }
+  .tab-bar-wrap.peut-gauche .tab-arrow-prev,
+  .tab-bar-wrap.peut-droite .tab-arrow-next { display: flex; }
+
+  /* Petit rappel anime au premier affichage */
+  @keyframes rappel-scroll {
+    0%, 100% { transform: translateX(0); }
+    50%      { transform: translateX(-5px); }
+  }
+  .tab-bar-wrap.peut-droite .tab-arrow-next { animation: rappel-scroll 1.3s ease-in-out 3; }
+  @media (prefers-reduced-motion: reduce) {
+    .tab-bar-wrap.peut-droite .tab-arrow-next { animation: none; }
+    .tab-bar { scroll-behavior: auto; }
+  }
   .tab-btn {
     flex: 1 1 0;
     background: none; border: none; cursor: pointer;
@@ -387,7 +439,7 @@
       </div>
     </div>
     <div class="hero-photo">
-      <img src="img/hero.jpg" alt="Arthur Soulard, professeur particulier de maths et physique-chimie à Toulon et en Vendée" loading="lazy">
+      <img src="img/hero.jpg" alt="" aria-hidden="true" loading="lazy" data-nosnippet>
     </div>
   </div>
 </section>
@@ -407,13 +459,17 @@
 
 <section class="tabs-section" id="tabs">
   <div class="wrap">
-    <div class="tab-bar" role="tablist">
-      <button class="tab-btn active" data-tab="apropos">Qui suis-je</button>
-      <button class="tab-btn" data-tab="matieres">Matières</button>
-      <button class="tab-btn" data-tab="niveaux">Niveaux</button>
-      <button class="tab-btn" data-tab="organisation">Organisation</button>
-      <button class="tab-btn" data-tab="tarifs">Tarifs</button>
-      <button class="tab-btn" data-tab="paiement">Paiement</button>
+    <div class="tab-bar-wrap" id="tabBarWrap">
+      <div class="tab-bar" id="tabBar" role="tablist">
+        <button class="tab-btn active" data-tab="apropos">Qui suis-je</button>
+        <button class="tab-btn" data-tab="matieres">Matières</button>
+        <button class="tab-btn" data-tab="niveaux">Niveaux</button>
+        <button class="tab-btn" data-tab="organisation">Organisation</button>
+        <button class="tab-btn" data-tab="tarifs">Tarifs</button>
+        <button class="tab-btn" data-tab="paiement">Paiement</button>
+      </div>
+      <button type="button" class="tab-arrow tab-arrow-prev" aria-label="Onglets précédents">&#8249;</button>
+      <button type="button" class="tab-arrow tab-arrow-next" aria-label="Onglets suivants">&#8250;</button>
     </div>
 
     <div class="tab-panel active" id="panel-apropos">
@@ -569,11 +625,37 @@
 </footer>
 
 <script>
+  var barreOnglets = document.getElementById('tabBar');
+  var enveloppeOnglets = document.getElementById('tabBarWrap');
+
+  function majIndicateursOnglets() {
+    var restant = barreOnglets.scrollWidth - barreOnglets.clientWidth;
+    enveloppeOnglets.classList.toggle('peut-gauche', barreOnglets.scrollLeft > 4);
+    enveloppeOnglets.classList.toggle('peut-droite', barreOnglets.scrollLeft < restant - 4);
+  }
+
+  function defilerOnglets(sens) {
+    barreOnglets.scrollBy({ left: sens * barreOnglets.clientWidth * 0.65, behavior: 'smooth' });
+  }
+
+  barreOnglets.addEventListener('scroll', majIndicateursOnglets, { passive: true });
+  window.addEventListener('resize', majIndicateursOnglets);
+  document.querySelector('.tab-arrow-prev').addEventListener('click', function(){ defilerOnglets(-1); });
+  document.querySelector('.tab-arrow-next').addEventListener('click', function(){ defilerOnglets(1); });
+  majIndicateursOnglets();
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(majIndicateursOnglets);
+  }
+
   function activerOnglet(nom) {
     document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
     document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
-    document.querySelector('.tab-btn[data-tab="' + nom + '"]').classList.add('active');
+    var bouton = document.querySelector('.tab-btn[data-tab="' + nom + '"]');
+    bouton.classList.add('active');
     document.getElementById('panel-' + nom).classList.add('active');
+    if (bouton.scrollIntoView) {
+      bouton.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
   }
 
   document.querySelectorAll('.tab-btn').forEach(function(btn){

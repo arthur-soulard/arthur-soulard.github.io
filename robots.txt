@@ -1,4 +1,8 @@
 User-agent: *
 Allow: /
+Disallow: /img/hero.jpg
+
+User-agent: Googlebot-Image
+Disallow: /img/hero.jpg
 
 Sitemap: https://arthur-soulard.github.io/sitemap.xml
