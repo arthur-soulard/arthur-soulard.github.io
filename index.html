@@ -157,12 +157,7 @@
 
   /* HERO */
   .hero {
-    /* Trois couches : deux halos colores poses sur le degrade de base.
-       Le marine reste dominant, les halos ne font que casser l'aplat. */
-    background:
-      radial-gradient(110% 85% at 8% 0%, rgba(79,179,172,.20) 0%, transparent 55%),
-      radial-gradient(85% 75% at 100% 8%, rgba(41,124,119,.28) 0%, transparent 60%),
-      linear-gradient(160deg, var(--marine) 0%, var(--marine-clair) 100%);
+    background: linear-gradient(160deg, var(--marine) 0%, var(--marine-clair) 100%);
     color: var(--blanc);
     padding: 3.5rem 0 4.8rem;
     position: relative;
@@ -170,14 +165,9 @@
   }
   .hero::after {
     content: "";
-    position: absolute; top: -90px; right: -90px;
-    width: 320px; height: 320px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(127,212,206,.22), transparent 70%);
-    animation: derive 18s ease-in-out infinite;
-  }
-  @keyframes derive {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    50%      { transform: translate(-26px, 22px) scale(1.08); }
+    position: absolute; top: -80px; right: -80px;
+    width: 280px; height: 280px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(79,179,172,.2), transparent 70%);
   }
   .hero-inner {
     max-width: 1080px; margin: 0 auto; padding: 0 1.4rem;
@@ -188,15 +178,9 @@
   .hero-text { flex: 1 1 340px; min-width: 280px; }
   .eyebrow {
     display: inline-block;
-    color: var(--accent-clair); font-size: .8rem; font-weight: 600;
+    color: var(--accent); font-size: .8rem; font-weight: 600;
     letter-spacing: .08em; text-transform: uppercase;
     margin-bottom: .9rem;
-    /* Pastille de verre : le fond du hero transparait sous le texte */
-    background: rgba(255,255,255,.09);
-    border: 1px solid rgba(255,255,255,.18);
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    padding: .4rem .9rem; border-radius: 999px;
   }
   .hero h1 {
     font-size: clamp(1.9rem, 4.5vw, 2.7rem);
@@ -240,7 +224,7 @@
     flex: 0 0 auto; width: 170px; height: 170px;
     border-radius: 50%; overflow: hidden;
     border: 3px solid var(--accent);
-    box-shadow: 0 12px 30px rgba(0,0,0,.3), 0 0 0 10px rgba(127,212,206,.10);
+    box-shadow: 0 12px 30px rgba(0,0,0,.3);
     background: #ccc;
   }
   .hero-photo img {
@@ -342,7 +326,7 @@
     .tab-bar-wrap.peut-droite .tab-arrow-next { animation: none; }
     .tab-bar { scroll-behavior: auto; }
     .tab-panel.active { animation: none; }
-    .hero::after, .modal-box { animation: none; }
+    .modal-box { animation: none; }
     .js .reveal { transform: none; transition: none; }
     .btn:hover, .modal-choice:hover,
     .card:hover, .orga-card:hover, .tarif-card:hover, .etape-card:hover {
@@ -484,8 +468,11 @@
     background: linear-gradient(90deg, var(--accent-clair), var(--accent-dark));
   }
 
+  /* PRESENTATION */
+  .apropos { padding: 2.6rem 0 .4rem; }
+
   /* ETAPES */
-  .etapes { padding: 2.8rem 0 .4rem; }
+  .etapes { padding: 2.6rem 0 .4rem; }
   .etapes-grid {
     list-style: none;
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
@@ -591,7 +578,7 @@
     .hero::after, .hero-photo, .saut-contenu, .tab-bar-wrap, .cta-row,
     .modal-overlay, .cta-flottant, .tarif-card::before,
     .faq-item summary::after { display: none !important; }
-    .eyebrow { background: none; border: none; padding: 0; color: #000; }
+    .eyebrow { color: #000; }
     .stats { margin-top: 0; padding: 0; }
     .stats-inner {
       background: none; box-shadow: none; border: 1px solid #999;
@@ -723,7 +710,7 @@
       "makesOffer": [
         {
           "@type": "Offer",
-          "name": "Séance d'1 heure",
+          "name": "Séance d'une heure",
           "price": "20",
           "priceCurrency": "EUR",
           "availability": "https://schema.org/InStock",
@@ -732,7 +719,7 @@
         },
         {
           "@type": "Offer",
-          "name": "Séance d'1h30",
+          "name": "Séance d'une heure trente",
           "price": "29",
           "priceCurrency": "EUR",
           "availability": "https://schema.org/InStock",
@@ -741,7 +728,7 @@
         },
         {
           "@type": "Offer",
-          "name": "Séance de 2 heures",
+          "name": "Séance de deux heures",
           "price": "38",
           "priceCurrency": "EUR",
           "availability": "https://schema.org/InStock",
@@ -797,7 +784,7 @@
       "availableChannel": [
         {
           "@type": "ServiceChannel",
-          "name": "Visio-conférence",
+          "name": "Visioconférence",
           "availableLanguage": "fr",
           "serviceUrl": "https://arthur-soulard.github.io/"
         },
@@ -816,7 +803,7 @@
       "offers": [
         {
           "@type": "Offer",
-          "name": "Séance d'1 heure",
+          "name": "Séance d'une heure",
           "price": "20",
           "priceCurrency": "EUR",
           "availability": "https://schema.org/InStock",
@@ -825,7 +812,7 @@
         },
         {
           "@type": "Offer",
-          "name": "Séance d'1h30",
+          "name": "Séance d'une heure trente",
           "price": "29",
           "priceCurrency": "EUR",
           "availability": "https://schema.org/InStock",
@@ -834,7 +821,7 @@
         },
         {
           "@type": "Offer",
-          "name": "Séance de 2 heures",
+          "name": "Séance de deux heures",
           "price": "38",
           "priceCurrency": "EUR",
           "availability": "https://schema.org/InStock",
@@ -850,7 +837,7 @@
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "À quels niveaux et dans quelles matières donnez-vous cours ?",
+          "name": "À quels niveaux et dans quelles matières donnez-vous des cours ?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "De la 6ᵉ à la terminale, en mathématiques et en physique-chimie. Cela couvre la préparation du brevet, la seconde générale et technologique, les enseignements de spécialité Mathématiques et Physique-Chimie en première et en terminale, l'épreuve anticipée de mathématiques du tronc commun, et la préparation du bac."
@@ -858,7 +845,7 @@
         },
         {
           "@type": "Question",
-          "name": "Les cours ont-ils lieu à domicile ou en visio ?",
+          "name": "Les cours ont-ils lieu à domicile ou en visio ?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Les deux. La visio est disponible toute l'année, partout en France. À domicile, je me déplace dans un rayon de 20 km autour de Treize-Septiers et Montaigu-Vendée pendant les vacances scolaires, et à Toulon et ses environs le week-end selon disponibilité."
@@ -866,7 +853,7 @@
         },
         {
           "@type": "Question",
-          "name": "Comment se déroule un cours en visio ?",
+          "name": "Comment se déroule un cours en visio ?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Avec un partage d'écran, un tableau blanc et vos exercices sous les yeux. C'est la formule la plus souple pour un suivi hebdomadaire régulier, puisqu'elle ne dépend ni des vacances ni de la distance."
@@ -874,23 +861,23 @@
         },
         {
           "@type": "Question",
-          "name": "Combien coûte une séance ?",
+          "name": "Combien coûte une séance ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "20 € pour une heure, 29 € pour une heure trente et 38 € pour deux heures. Le tarif est le même en visio et en présentiel, et il s'agit toujours d'un cours individuel."
+            "text": "20 € pour une heure, 29 € pour une heure trente et 38 € pour deux heures. Le tarif est le même en visio et en présentiel, et il s'agit toujours d'un cours individuel."
           }
         },
         {
           "@type": "Question",
-          "name": "Comment se passe le règlement ?",
+          "name": "Comment se passe le règlement ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Au choix : CESU (Chèque Emploi Service Universel), virement bancaire ou espèces. Mon activité est déclarée via le CESU déclaratif."
+            "text": "Au choix : CESU (Chèque Emploi Service Universel), virement bancaire ou espèces. Mon activité est déclarée via le CESU déclaratif."
           }
         },
         {
           "@type": "Question",
-          "name": "Comment vous contacter pour organiser un premier cours ?",
+          "name": "Comment vous contacter pour organiser un premier cours ?",
           "acceptedAnswer": {
             "@type": "Answer",
             "text": "Par téléphone ou par SMS au 07 49 05 50 15, par WhatsApp, ou par e-mail à arthursoulard1312@gmail.com. Dites-moi le niveau, la matière et ce qui pose problème, et on cale une première séance."
@@ -918,7 +905,7 @@
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-text">
-      <span class="eyebrow">Cours particuliers de maths et physique-chimie &middot; Vendée, Toulon et&nbsp;visio</span>
+      <span class="eyebrow">Cours particuliers de maths et de physique-chimie &middot; Vendée, Toulon et&nbsp;visio</span>
       <h1>Comprendre les maths et la physique-chimie, <em>pour de bon</em>.</h1>
       <p class="lead">Étudiant en école d'ingénieur à SeaTech Toulon, je donne des cours particuliers de mathématiques et de physique-chimie du collège à la terminale. À domicile en Vendée, autour de Treize-Septiers et Montaigu, à Toulon le week-end, ou en visio partout en France toute l'année.</p>
       <div class="cta-row">
@@ -935,7 +922,7 @@
 <div class="stats">
   <div class="stats-inner">
     <div>
-      <div class="stat-num">20 €</div>
+      <div class="stat-num">20&nbsp;€</div>
       <div class="stat-label">Tarif de départ / h</div>
     </div>
     <div>
@@ -948,7 +935,21 @@
 <section class="intro">
   <div class="wrap">
     <h2>Du soutien scolaire qui s'adapte à votre enfant</h2>
-    <p>Que ce soit pour préparer le brevet, reprendre les bases en seconde ou viser une bonne note à la spécialité maths du bac, je construis chaque séance à partir de ce qui bloque vraiment. On refait les exercices ensemble, on identifie les erreurs qui reviennent, et on installe les méthodes.</p>
+    <p>Que ce soit pour préparer le brevet, reprendre les bases en seconde ou viser une bonne note à la spécialité maths du bac, je construis chaque séance à partir de ce qui bloque vraiment. On refait les exercices ensemble, on identifie les erreurs qui reviennent et on installe les méthodes.</p>
+  </div>
+</section>
+
+<section class="apropos" aria-labelledby="titre-apropos">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Présentation</span>
+      <h2 id="titre-apropos">Qui suis-je&nbsp;?</h2>
+    </div>
+    <div class="about-card">
+      <p>Originaire de Treize-Septiers, j'ai intégré SeaTech Toulon en première année après une prépa MP au lycée Saint-François d'Assise.</p>
+      <p>Passionné par les mathématiques et la physique, j'ai toujours aimé expliquer, reformuler et trouver la bonne approche pour chaque élève. Titulaire d'un bac mention bien avec les spécialités Maths et Physique-Chimie, je connais bien les programmes du lycée.</p>
+      <p>Délégué de classe quatre années consécutives, je suis à l'écoute et patient. Mon objectif&nbsp;: vous aider à vraiment comprendre les notions pour décrocher une meilleure note au brevet ou au bac, ou simplement gagner en confiance sur la matière.</p>
+    </div>
   </div>
 </section>
 
@@ -961,18 +962,18 @@
     <ol class="etapes-grid" role="list">
       <li class="etape-card reveal">
         <span class="etape-num" aria-hidden="true">1</span>
-        <h3>On fait le point</h3>
-        <p>Un appel ou un message suffit pour me dire le niveau, la matière et ce qui coince : un chapitre précis, des bases à reprendre, ou une échéance comme le brevet ou le bac.</p>
+        <h3>Théorie</h3>
+        <p>On commence par un rappel du cours, puis on reprend ensemble les notions qui n'ont pas été comprises.</p>
       </li>
       <li class="etape-card reveal">
         <span class="etape-num" aria-hidden="true">2</span>
-        <h3>La séance part de ses cours</h3>
-        <p>On travaille sur ses exercices, son dernier contrôle et le chapitre en cours. On les refait ensemble et on repère les erreurs qui reviennent d'une copie à l'autre.</p>
+        <h3>Pratique</h3>
+        <p>On travaille sur ses exercices et son dernier contrôle. Il est aussi possible de demander des exercices différents de ceux de son cours.</p>
       </li>
       <li class="etape-card reveal">
         <span class="etape-num" aria-hidden="true">3</span>
-        <h3>On installe les méthodes</h3>
-        <p>L'objectif n'est pas de finir l'exercice du jour, mais de savoir refaire le suivant seul. On repart avec une méthode claire, applicable au prochain contrôle.</p>
+        <h3>Méthode</h3>
+        <p>On repère les erreurs qui reviennent souvent et on travaille dessus, jusqu'à mettre en place une méthode. Le cours suivant commence par un retour sur le précédent, pour vérifier que l'essentiel a été retenu.</p>
       </li>
     </ol>
   </div>
@@ -982,8 +983,7 @@
   <div class="wrap">
     <div class="tab-bar-wrap" id="tabBarWrap">
       <div class="tab-bar" id="tabBar" role="tablist" aria-label="Sections de la page">
-        <button type="button" class="tab-btn active" id="tab-apropos" data-tab="apropos" role="tab" aria-selected="true" aria-controls="panel-apropos">Qui suis-je</button>
-        <button type="button" class="tab-btn" id="tab-matieres" data-tab="matieres" role="tab" aria-selected="false" aria-controls="panel-matieres" tabindex="-1">Matières</button>
+        <button type="button" class="tab-btn active" id="tab-matieres" data-tab="matieres" role="tab" aria-selected="true" aria-controls="panel-matieres">Matières</button>
         <button type="button" class="tab-btn" id="tab-niveaux" data-tab="niveaux" role="tab" aria-selected="false" aria-controls="panel-niveaux" tabindex="-1">Niveaux</button>
         <button type="button" class="tab-btn" id="tab-organisation" data-tab="organisation" role="tab" aria-selected="false" aria-controls="panel-organisation" tabindex="-1">Organisation</button>
         <button type="button" class="tab-btn" id="tab-tarifs" data-tab="tarifs" role="tab" aria-selected="false" aria-controls="panel-tarifs" tabindex="-1">Tarifs</button>
@@ -993,19 +993,7 @@
       <button type="button" class="tab-arrow tab-arrow-next" aria-label="Onglets suivants">&#8250;</button>
     </div>
 
-    <div class="tab-panel active" id="panel-apropos" role="tabpanel" aria-labelledby="tab-apropos" tabindex="0">
-      <div class="section-head">
-        <span class="tag">Présentation</span>
-        <h2>Qui suis-je ?</h2>
-      </div>
-      <div class="about-card">
-        <p>Originaire de Treize-Septiers, j'ai intégré SeaTech Toulon en 1ère année après une prépa MP au lycée Saint-François d'Assise.</p>
-        <p>Passionné par les mathématiques et la physique, j'ai toujours aimé expliquer, reformuler et trouver la bonne approche pour chaque élève. Titulaire d'un bac mention Bien avec spécialités Maths &amp; Physique-Chimie, je connais bien les programmes du lycée.</p>
-        <p>Délégué de classe 4 années consécutives, je suis à l'écoute et patient. Mon objectif : vous aider à vraiment comprendre les notions pour décrocher une meilleure note au brevet ou au bac, ou simplement gagner en confiance sur la matière.</p>
-      </div>
-    </div>
-
-    <div class="tab-panel" id="panel-matieres" role="tabpanel" aria-labelledby="tab-matieres" tabindex="0">
+    <div class="tab-panel active" id="panel-matieres" role="tabpanel" aria-labelledby="tab-matieres" tabindex="0">
       <div class="section-head">
         <span class="tag">Contenu</span>
         <h2>Matières proposées</h2>
@@ -1028,10 +1016,10 @@
         <h2>Niveaux accompagnés</h2>
       </div>
       <div class="niveaux-list">
-        <div class="niveau-item"><span class="niveau-dot"></span>6ᵉ, 5ᵉ, 4ᵉ, 3ᵉ (préparation au Brevet)</div>
+        <div class="niveau-item"><span class="niveau-dot"></span>6ᵉ, 5ᵉ, 4ᵉ, 3ᵉ (préparation au brevet)</div>
         <div class="niveau-item"><span class="niveau-dot"></span>Seconde générale et technologique</div>
-        <div class="niveau-item"><span class="niveau-dot"></span>Première : enseignement de spécialité Mathématiques, enseignement de spécialité Physique-Chimie, ainsi que l'épreuve anticipée de mathématiques (tronc commun)</div>
-        <div class="niveau-item"><span class="niveau-dot"></span>Terminale : enseignement de spécialité Mathématiques, enseignement de spécialité Physique-Chimie (préparation au Bac)</div>
+        <div class="niveau-item"><span class="niveau-dot"></span>Première&nbsp;: enseignement de spécialité Mathématiques, enseignement de spécialité Physique-Chimie, ainsi que l'épreuve anticipée de mathématiques (tronc commun)</div>
+        <div class="niveau-item"><span class="niveau-dot"></span>Terminale&nbsp;: enseignement de spécialité Mathématiques, enseignement de spécialité Physique-Chimie (préparation au bac)</div>
       </div>
     </div>
 
@@ -1042,8 +1030,8 @@
       </div>
       <div class="orga-grid">
         <div class="orga-card">
-          <h3>Visio-conférence &mdash; toute l'année</h3>
-          <p>Disponible toute l'année, partout en France. Un partage d'écran, un tableau blanc, et vos exercices sous les yeux. C'est la formule la plus souple pour un suivi hebdomadaire régulier.</p>
+          <h3>Visioconférence &mdash; toute l'année</h3>
+          <p>Disponible toute l'année, partout en France. Un partage d'écran, un tableau blanc et vos exercices sous les yeux. C'est la formule la plus souple pour un suivi hebdomadaire régulier.</p>
         </div>
         <div class="orga-card">
           <h3>À domicile en Vendée &mdash; pendant les vacances</h3>
@@ -1064,18 +1052,18 @@
       </div>
       <div class="tarifs-grid">
         <div class="tarif-card">
-          <div class="tarif-titre">Séance d'1 heure</div>
-          <div class="tarif-prix">20 €</div>
+          <div class="tarif-titre">Séance d'une heure</div>
+          <div class="tarif-prix">20&nbsp;€</div>
           <div class="tarif-detail">Visio ou présentiel</div>
         </div>
         <div class="tarif-card">
-          <div class="tarif-titre">Séance d'1h30</div>
-          <div class="tarif-prix">29 €</div>
+          <div class="tarif-titre">Séance d'une heure trente</div>
+          <div class="tarif-prix">29&nbsp;€</div>
           <div class="tarif-detail">Visio ou présentiel</div>
         </div>
         <div class="tarif-card">
-          <div class="tarif-titre">Séance de 2 heures</div>
-          <div class="tarif-prix">38 €</div>
+          <div class="tarif-titre">Séance de deux heures</div>
+          <div class="tarif-prix">38&nbsp;€</div>
           <div class="tarif-detail">Visio ou présentiel</div>
         </div>
       </div>
@@ -1114,27 +1102,27 @@
     </div>
     <div class="faq-list">
       <details class="faq-item reveal">
-        <summary>À quels niveaux et dans quelles matières donnez-vous cours ?</summary>
+        <summary>À quels niveaux et dans quelles matières donnez-vous des cours&nbsp;?</summary>
         <div class="faq-reponse"><p>De la 6ᵉ à la terminale, en mathématiques et en physique-chimie. Cela couvre la préparation du brevet, la seconde générale et technologique, les enseignements de spécialité Mathématiques et Physique-Chimie en première et en terminale, l'épreuve anticipée de mathématiques du tronc commun, et la préparation du bac.</p></div>
       </details>
       <details class="faq-item reveal">
-        <summary>Les cours ont-ils lieu à domicile ou en visio ?</summary>
+        <summary>Les cours ont-ils lieu à domicile ou en visio&nbsp;?</summary>
         <div class="faq-reponse"><p>Les deux. La visio est disponible toute l'année, partout en France. À domicile, je me déplace dans un rayon de 20 km autour de Treize-Septiers et Montaigu-Vendée pendant les vacances scolaires, et à Toulon et ses environs le week-end selon disponibilité.</p></div>
       </details>
       <details class="faq-item reveal">
-        <summary>Comment se déroule un cours en visio ?</summary>
+        <summary>Comment se déroule un cours en visio&nbsp;?</summary>
         <div class="faq-reponse"><p>Avec un partage d'écran, un tableau blanc et vos exercices sous les yeux. C'est la formule la plus souple pour un suivi hebdomadaire régulier, puisqu'elle ne dépend ni des vacances ni de la distance.</p></div>
       </details>
       <details class="faq-item reveal">
-        <summary>Combien coûte une séance ?</summary>
-        <div class="faq-reponse"><p>20 € pour une heure, 29 € pour une heure trente et 38 € pour deux heures. Le tarif est le même en visio et en présentiel, et il s'agit toujours d'un cours individuel.</p></div>
+        <summary>Combien coûte une séance&nbsp;?</summary>
+        <div class="faq-reponse"><p>20&nbsp;€ pour une heure, 29&nbsp;€ pour une heure trente et 38&nbsp;€ pour deux heures. Le tarif est le même en visio et en présentiel, et il s'agit toujours d'un cours individuel.</p></div>
       </details>
       <details class="faq-item reveal">
-        <summary>Comment se passe le règlement ?</summary>
-        <div class="faq-reponse"><p>Au choix : CESU (Chèque Emploi Service Universel), virement bancaire ou espèces. Mon activité est déclarée via le CESU déclaratif.</p></div>
+        <summary>Comment se passe le règlement&nbsp;?</summary>
+        <div class="faq-reponse"><p>Au choix&nbsp;: CESU (Chèque Emploi Service Universel), virement bancaire ou espèces. Mon activité est déclarée via le CESU déclaratif.</p></div>
       </details>
       <details class="faq-item reveal">
-        <summary>Comment vous contacter pour organiser un premier cours ?</summary>
+        <summary>Comment vous contacter pour organiser un premier cours&nbsp;?</summary>
         <div class="faq-reponse"><p>Par téléphone ou par SMS au 07 49 05 50 15, par WhatsApp, ou par e-mail à arthursoulard1312@gmail.com. Dites-moi le niveau, la matière et ce qui pose problème, et on cale une première séance.</p></div>
       </details>
     </div>
