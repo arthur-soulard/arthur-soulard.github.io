@@ -25,11 +25,30 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#0d2438">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'">
 <meta name="google-site-verification" content="41PgtaEMhJLDMlWhQVJV4a-S8M6sK89P17dyRRVTLLc" />
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="preload" href="fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/fraunces-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+  /* Polices servies depuis ce domaine : aucun appel a Google, aucune IP transmise */
+  @font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url("fonts/inter-latin-var.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: "Fraunces";
+    font-style: normal;
+    font-weight: 500 600;
+    font-display: swap;
+    src: url("fonts/fraunces-latin-var.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
   :root {
     --marine: #0d2438;
     --marine-clair: #143a57;
@@ -56,6 +75,16 @@
   h1, h2, h3 { font-family: "Fraunces", serif; }
 
   a { color: inherit; }
+
+  /* Lien d'evitement : invisible tant qu'on ne tabule pas dessus */
+  .saut-contenu {
+    position: absolute; left: .6rem; top: -100px; z-index: 200;
+    background: var(--blanc); color: var(--marine);
+    padding: .7rem 1.1rem; border-radius: 0 0 8px 8px;
+    font-size: .9rem; font-weight: 700; text-decoration: none;
+    transition: top .15s;
+  }
+  .saut-contenu:focus { top: 0; }
 
   /* Anneau de focus lisible sur fond clair comme sur fond marine */
   :focus-visible {
@@ -392,6 +421,27 @@
     text-align: center;
   }
 
+  /* IMPRESSION : on deplie les onglets, on retire le decor, on garde le texte */
+  @media print {
+    @page { margin: 1.5cm; }
+    body { background: #fff; color: #000; font-size: 11pt; line-height: 1.45; }
+    .hero, footer { background: #fff !important; color: #000 !important; }
+    .hero::after, .hero-photo, .saut-contenu,
+    .tab-bar-wrap, .cta-row, .modal-overlay { display: none !important; }
+    .hero h1 em, .section-head .tag, .footer-col h4 { color: #000; }
+    .hero p.lead, .footer-col p, .footer-col a, .footer-brand p, .footer-bottom {
+      color: #000 !important;
+    }
+    /* tous les panneaux sont imprimes, pas seulement l'onglet ouvert */
+    .tab-panel { display: block !important; animation: none !important; }
+    .tab-panel + .tab-panel { margin-top: 1.2rem; }
+    .tabs-section { padding: 1rem 0 0; }
+    .about-card, .card, .orga-card, .tarif-card, .niveaux-list {
+      border: 1px solid #999; break-inside: avoid;
+    }
+    .section-head h2 { break-after: avoid; }
+  }
+
   @media (max-width: 760px) {
     .cards-grid, .cards-grid.cols-3 { grid-template-columns: 1fr; }
     .tarifs-grid { grid-template-columns: 1fr; }
@@ -406,69 +456,211 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Service",
-  "name": "Cours particuliers de Maths et Physique-Chimie — Arthur Soulard",
-  "serviceType": "Cours particuliers de Maths et Physique-Chimie",
-  "description": "Cours particuliers de Maths et Physique-Chimie, du collège à la terminale, en visio toute l'année ou en présentiel en Vendée et à Toulon.",
-  "url": "https://arthur-soulard.github.io/",
-  "provider": {
-    "@type": "Person",
-    "name": "Arthur Soulard",
-    "url": "https://arthur-soulard.github.io/",
-    "telephone": "+33749055015",
-    "email": "arthursoulard1312@gmail.com",
-    "knowsLanguage": "fr",
-    "alumniOf": {
-      "@type": "CollegeOrUniversity",
-      "name": "SeaTech — École d'ingénieurs de l'Université de Toulon"
-    }
-  },
-  "areaServed": [
-    { "@type": "Place", "name": "Vendée" },
-    { "@type": "Place", "name": "Toulon" }
-  ],
-  "audience": {
-    "@type": "EducationalAudience",
-    "educationalRole": "student"
-  },
-  "availableChannel": {
-    "@type": "ServiceChannel",
-    "availableLanguage": "fr",
-    "serviceUrl": "https://arthur-soulard.github.io/",
-    "servicePhone": {
-      "@type": "ContactPoint",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://arthur-soulard.github.io/#site",
+      "url": "https://arthur-soulard.github.io/",
+      "name": "Arthur Soulard — Cours particuliers",
+      "inLanguage": "fr-FR",
+      "publisher": {
+        "@id": "https://arthur-soulard.github.io/#arthur"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://arthur-soulard.github.io/#arthur",
+      "name": "Arthur Soulard",
+      "url": "https://arthur-soulard.github.io/",
       "telephone": "+33749055015",
-      "contactType": "customer service",
-      "availableLanguage": "fr"
-    }
-  },
-  "offers": [
-    {
-      "@type": "Offer",
-      "name": "Séance d'1 heure",
-      "priceCurrency": "EUR",
-      "price": "20",
-      "availability": "https://schema.org/InStock",
-      "url": "https://arthur-soulard.github.io/",
-      "description": "Cours individuel d'une heure, en visio ou en présentiel."
+      "email": "arthursoulard1312@gmail.com",
+      "jobTitle": "Professeur particulier de mathématiques et de physique-chimie",
+      "knowsLanguage": "fr",
+      "knowsAbout": [
+        "Mathématiques",
+        "Physique-Chimie",
+        "Préparation au baccalauréat",
+        "Préparation au brevet"
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "SeaTech — École d'ingénieurs de l'Université de Toulon"
+      }
     },
     {
-      "@type": "Offer",
-      "name": "Séance d'1h30",
-      "priceCurrency": "EUR",
-      "price": "29",
-      "availability": "https://schema.org/InStock",
+      "@type": [
+        "LocalBusiness",
+        "EducationalOrganization"
+      ],
+      "@id": "https://arthur-soulard.github.io/#activite",
+      "name": "Arthur Soulard — Cours particuliers de Maths et Physique-Chimie",
+      "description": "Cours particuliers de mathématiques et de physique-chimie, du collège à la terminale. Soutien scolaire à domicile en Vendée (Treize-Septiers, Montaigu) et à Toulon, ou en visio toute l'année.",
       "url": "https://arthur-soulard.github.io/",
-      "description": "Cours individuel d'une heure trente, en visio ou en présentiel."
+      "telephone": "+33749055015",
+      "email": "arthursoulard1312@gmail.com",
+      "image": "https://arthur-soulard.github.io/img/og-cover.jpg",
+      "priceRange": "20-38 EUR",
+      "currenciesAccepted": "EUR",
+      "paymentAccepted": "CESU, Virement bancaire, Espèces",
+      "founder": {
+        "@id": "https://arthur-soulard.github.io/#arthur"
+      },
+      "employee": {
+        "@id": "https://arthur-soulard.github.io/#arthur"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Treize-Septiers",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Vendée"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Montaigu-Vendée",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Vendée"
+          }
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Vendée"
+        },
+        {
+          "@type": "City",
+          "name": "Toulon",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Var"
+          }
+        }
+      ],
+      "availableLanguage": "fr",
+      "makesOffer": [
+        {
+          "@type": "Offer",
+          "name": "Séance d'1 heure",
+          "price": "20",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "description": "Cours individuel d'une heure, en visio ou en présentiel.",
+          "url": "https://arthur-soulard.github.io/"
+        },
+        {
+          "@type": "Offer",
+          "name": "Séance d'1h30",
+          "price": "29",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "description": "Cours individuel d'une heure trente, en visio ou en présentiel.",
+          "url": "https://arthur-soulard.github.io/"
+        },
+        {
+          "@type": "Offer",
+          "name": "Séance de 2 heures",
+          "price": "38",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "description": "Cours individuel de deux heures, en visio ou en présentiel.",
+          "url": "https://arthur-soulard.github.io/"
+        }
+      ]
     },
     {
-      "@type": "Offer",
-      "name": "Séance de 2 heures",
-      "priceCurrency": "EUR",
-      "price": "38",
-      "availability": "https://schema.org/InStock",
+      "@type": "Service",
+      "@id": "https://arthur-soulard.github.io/#service",
+      "name": "Cours particuliers de Maths et Physique-Chimie — Arthur Soulard",
+      "serviceType": "Soutien scolaire et cours particuliers de mathématiques et de physique-chimie",
+      "description": "Cours particuliers de mathématiques et de physique-chimie, du collège à la terminale, en visio toute l'année ou en présentiel en Vendée et à Toulon.",
       "url": "https://arthur-soulard.github.io/",
-      "description": "Cours individuel de deux heures, en visio ou en présentiel."
+      "provider": {
+        "@id": "https://arthur-soulard.github.io/#activite"
+      },
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Treize-Septiers",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Vendée"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Montaigu-Vendée",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Vendée"
+          }
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "Vendée"
+        },
+        {
+          "@type": "City",
+          "name": "Toulon",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Var"
+          }
+        }
+      ],
+      "audience": {
+        "@type": "EducationalAudience",
+        "educationalRole": "student"
+      },
+      "availableChannel": [
+        {
+          "@type": "ServiceChannel",
+          "name": "Visio-conférence",
+          "availableLanguage": "fr",
+          "serviceUrl": "https://arthur-soulard.github.io/"
+        },
+        {
+          "@type": "ServiceChannel",
+          "name": "À domicile",
+          "availableLanguage": "fr",
+          "servicePhone": {
+            "@type": "ContactPoint",
+            "telephone": "+33749055015",
+            "contactType": "customer service",
+            "availableLanguage": "fr"
+          }
+        }
+      ],
+      "offers": [
+        {
+          "@type": "Offer",
+          "name": "Séance d'1 heure",
+          "price": "20",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "description": "Cours individuel d'une heure, en visio ou en présentiel.",
+          "url": "https://arthur-soulard.github.io/"
+        },
+        {
+          "@type": "Offer",
+          "name": "Séance d'1h30",
+          "price": "29",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "description": "Cours individuel d'une heure trente, en visio ou en présentiel.",
+          "url": "https://arthur-soulard.github.io/"
+        },
+        {
+          "@type": "Offer",
+          "name": "Séance de 2 heures",
+          "price": "38",
+          "priceCurrency": "EUR",
+          "availability": "https://schema.org/InStock",
+          "description": "Cours individuel de deux heures, en visio ou en présentiel.",
+          "url": "https://arthur-soulard.github.io/"
+        }
+      ]
     }
   ]
 }
@@ -477,6 +669,10 @@
 <body>
 
 <div id="top"></div>
+
+<a class="saut-contenu" href="#contenu">Aller au contenu</a>
+
+<main id="contenu">
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-text">
@@ -634,6 +830,7 @@
 
   </div>
 </section>
+</main>
 
 <div class="modal-overlay" id="modalContact" role="dialog" aria-modal="true" aria-labelledby="modalContactTitre" aria-hidden="true">
   <div class="modal-box">
@@ -641,11 +838,17 @@
     <h3 id="modalContactTitre">Me contacter</h3>
     <p class="modal-sub">Choisissez votre moyen de contact préféré.</p>
     <div class="modal-choices">
-      <a class="modal-choice" href="https://mail.google.com/mail/?view=cm&fs=1&to=arthursoulard1312@gmail.com&su=Cours%20particuliers" target="_blank" rel="noopener">
-        <span class="modal-icon">@</span> Par e-mail (Gmail)
+      <a class="modal-choice" href="tel:+33749055015">
+        <span class="modal-icon" aria-hidden="true">TEL</span> Par téléphone
+      </a>
+      <a class="modal-choice" href="https://wa.me/33749055015?text=Bonjour%20Arthur%2C%20je%20vous%20contacte%20au%20sujet%20de%20cours%20particuliers." target="_blank" rel="noopener noreferrer">
+        <span class="modal-icon" aria-hidden="true">WA</span> Par WhatsApp
+      </a>
+      <a class="modal-choice" href="mailto:arthursoulard1312@gmail.com?subject=Cours%20particuliers">
+        <span class="modal-icon" aria-hidden="true">@</span> Par e-mail
       </a>
       <a class="modal-choice" href="sms:+33749055015">
-        <span class="modal-icon">SMS</span> Par message (SMS)
+        <span class="modal-icon" aria-hidden="true">SMS</span> Par message
       </a>
     </div>
   </div>
@@ -674,6 +877,33 @@
     </div>
   </div>
 </footer>
+
+<!--
+  ============================================================================
+  MESURE D'AUDIENCE - A ACTIVER (il manque uniquement ton code de compte)
+  ============================================================================
+  Aujourd'hui le site ne mesure rien : impossible de savoir combien de
+  visiteurs viennent, d'ou ils arrivent, ni si le bouton "Me contacter" est
+  clique. GoatCounter est gratuit pour un usage personnel, sans cookie
+  (donc toujours aucun bandeau a afficher) et n'envoie rien a Google.
+
+  Pour l'activer, trois etapes :
+
+  1. Creer un compte sur https://www.goatcounter.com/signup
+     et choisir un identifiant, par exemple "arthur-soulard".
+
+  2. Decommenter la ligne <script> ci-dessous et remplacer MONCODE
+     par cet identifiant.
+
+  3. Ajouter les deux autorisations a la Content-Security-Policy en haut
+     de ce fichier, sinon le script sera bloque :
+       script-src  ... ajouter   https://gc.zgo.at
+       img-src     ... ajouter   https://MONCODE.goatcounter.com
+
+  <script data-goatcounter="https://MONCODE.goatcounter.com/count"
+          async src="//gc.zgo.at/count.js"></script>
+  ============================================================================
+-->
 
 <script>
   var barreOnglets = document.getElementById('tabBar');

@@ -10,10 +10,28 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#0d2438">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'">
+<link rel="preload" href="/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fraunces-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <style>
+  @font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url("/fonts/inter-latin-var.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: "Fraunces";
+    font-style: normal;
+    font-weight: 500 600;
+    font-display: swap;
+    src: url("/fonts/fraunces-latin-var.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
   :root {
     --marine: #0d2438;
     --accent: #4fb3ac;
@@ -141,7 +159,7 @@
     <section class="bloc">
       <h2>Propriété intellectuelle</h2>
       <p>L'ensemble des contenus de ce site (textes, mise en page, photographie) est la propriété d'Arthur Soulard, sauf mention contraire. Toute reproduction ou réutilisation, totale ou partielle, sans autorisation préalable est interdite.</p>
-      <p class="note">Les polices de caractères utilisées (Inter et Fraunces) sont distribuées sous licence libre SIL Open Font License via Google Fonts.</p>
+      <p class="note">Les polices de caractères utilisées (Inter et Fraunces) sont distribuées sous licence libre SIL Open Font License.</p>
     </section>
 
     <section class="bloc">
@@ -149,7 +167,7 @@
       <p>Ce site ne dépose aucun cookie, n'utilise aucun outil de mesure d'audience et ne comporte aucun formulaire de collecte. Aucune donnée n'est collectée à votre insu lors de votre visite.</p>
       <p>Si vous me contactez par e-mail ou par SMS, les informations que vous me transmettez (nom, coordonnées, demande) sont utilisées uniquement pour répondre à votre demande et organiser les cours. Elles ne sont ni cédées ni transmises à des tiers.</p>
       <p>Conformément au règlement général sur la protection des données (RGPD) et à la loi Informatique et Libertés, vous pouvez à tout moment demander l'accès, la rectification ou la suppression de ces informations en écrivant à <a href="mailto:arthursoulard1312@gmail.com">arthursoulard1312@gmail.com</a>.</p>
-      <p class="note">À noter&nbsp;: les polices de caractères sont chargées depuis les serveurs de Google Fonts, ce qui implique la transmission de votre adresse IP à Google lors de l'affichage de la page.</p>
+      <p class="note">À noter&nbsp;: ce site ne fait appel à aucun service tiers. Les polices de caractères sont servies depuis ce domaine, votre adresse IP n'est donc transmise à personne d'autre que l'hébergeur.</p>
     </section>
 
     <section class="bloc">
