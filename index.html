@@ -221,8 +221,17 @@
     font-size: .78rem; color: var(--gris); margin-top: .2rem;
   }
 
+  /* INTRO (texte visible des le chargement, hors onglets) */
+  .intro { padding: 2.6rem 0 .6rem; }
+  .intro h2 {
+    font-size: clamp(1.4rem, 3vw, 1.75rem); font-weight: 600;
+    color: var(--marine); margin-bottom: .7rem;
+    max-width: 640px;
+  }
+  .intro p { max-width: 680px; color: var(--texte); }
+
   /* TABS */
-  .tabs-section { padding: 3rem 0 4rem; }
+  .tabs-section { padding: 2rem 0 4rem; }
   .tab-bar-wrap { position: relative; margin-bottom: 2rem; }
   .tab-bar {
     display: flex; gap: .4rem; overflow-x: auto;
@@ -703,6 +712,13 @@
   </div>
 </div>
 
+<section class="intro">
+  <div class="wrap">
+    <h2>Du soutien scolaire qui s'adapte à votre enfant</h2>
+    <p>Que ce soit pour préparer le brevet, reprendre les bases en seconde ou viser une bonne note à la spécialité maths du bac, je construis chaque séance à partir de ce qui bloque vraiment. On refait les exercices ensemble, on identifie les erreurs qui reviennent, et on installe les méthodes.</p>
+  </div>
+</section>
+
 <section class="tabs-section" id="tabs">
   <div class="wrap">
     <div class="tab-bar-wrap" id="tabBarWrap">
@@ -767,16 +783,16 @@
       </div>
       <div class="orga-grid">
         <div class="orga-card">
-          <h3>Visio-conférence</h3>
-          <p>Disponible toute l'année, flexible selon mon emploi du temps.</p>
+          <h3>Visio-conférence &mdash; toute l'année</h3>
+          <p>Disponible toute l'année, partout en France. Un partage d'écran, un tableau blanc, et vos exercices sous les yeux. C'est la formule la plus souple pour un suivi hebdomadaire régulier.</p>
         </div>
         <div class="orga-card">
-          <h3>Présentiel en Vendée</h3>
-          <p>À votre domicile dans un rayon de 20 km autour de Treize-Septiers et Montaigu, pendant les vacances scolaires. Je me déplace.</p>
+          <h3>À domicile en Vendée &mdash; pendant les vacances</h3>
+          <p>Je me déplace chez vous dans un rayon de 20 km autour de Treize-Septiers et Montaigu-Vendée, pendant les vacances scolaires. Déplacement compris dans le tarif.</p>
         </div>
         <div class="orga-card">
-          <h3>Présentiel à Toulon</h3>
-          <p>Sur place le week-end selon disponibilité. Me contacter pour discuter des modalités.</p>
+          <h3>À Toulon &mdash; le week-end</h3>
+          <p>Cours à domicile ou en lieu neutre sur Toulon et ses environs, le week-end selon disponibilité.</p>
         </div>
       </div>
     </div>
