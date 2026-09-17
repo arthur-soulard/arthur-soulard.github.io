@@ -5,7 +5,7 @@
 <meta name="format-detection" content="telephone=no">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Arthur Soulard — Cours particuliers Maths & Physique-Chimie</title>
-<meta name="description" content="Cours particuliers de Maths et Physique-Chimie, du collège à la terminale. Visio toute l'année, présentiel en Vendée et à Toulon. Étudiant en école d'ingénieur à SeaTech Toulon. Dès 20 €/h.">
+<meta name="description" content="Cours particuliers de Maths et Physique-Chimie, du collège à la terminale. Visio toute l'année, présentiel en Vendée et à Toulon. Dès 20 €/h.">
 <meta property="og:title" content="Arthur Soulard — Cours particuliers Maths & Physique-Chimie">
 <meta property="og:description" content="Cours particuliers de Maths et Physique-Chimie, du collège à la terminale. Dès 20 €/h.">
 <meta property="og:type" content="website">
@@ -22,15 +22,19 @@
 <meta name="robots" content="index, follow, noimageindex, max-image-preview:none">
 <meta name="googlebot" content="index, follow, noimageindex, max-image-preview:none">
 <link rel="canonical" href="https://arthur-soulard.github.io/">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta name="theme-color" content="#0d2438">
 <meta name="google-site-verification" content="41PgtaEMhJLDMlWhQVJV4a-S8M6sK89P17dyRRVTLLc" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
     --marine: #0d2438;
     --marine-clair: #143a57;
     --accent: #4fb3ac;
-    --accent-dark: #2f8b85;
+    --accent-dark: #297c77;
     --creme: #f7f5f0;
     --texte: #1c2733;
     --gris: #5c6b7a;
@@ -53,9 +57,15 @@
 
   a { color: inherit; }
 
-  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.4rem; }
+  /* Anneau de focus lisible sur fond clair comme sur fond marine */
+  :focus-visible {
+    outline: 3px solid var(--marine);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  .hero :focus-visible, footer :focus-visible { outline-color: var(--blanc); }
 
-  .btn { cursor: pointer; font-family: "Inter", sans-serif; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 1.4rem; }
 
   /* MODAL CONTACT */
   .modal-overlay {
@@ -142,6 +152,7 @@
     display: inline-block; padding: .8rem 1.5rem;
     border-radius: 30px; font-size: .92rem; font-weight: 700;
     text-decoration: none; transition: .15s;
+    cursor: pointer; font-family: "Inter", sans-serif;
   }
   .btn-primary { background: var(--accent); color: var(--marine); border: 1.5px solid var(--accent); }
   .btn-primary:hover { background: var(--accent-dark); color: var(--blanc); border-color: var(--accent-dark); }
@@ -214,8 +225,8 @@
 
   /* Fleches cliquables */
   .tab-arrow {
-    position: absolute; top: 50%; margin-top: -19px;
-    width: 30px; height: 30px; border-radius: 50%;
+    position: absolute; top: 50%; margin-top: -26px;
+    width: 44px; height: 44px; border-radius: 50%;
     border: 1px solid var(--gris-clair); background: var(--blanc);
     color: var(--marine); font-size: 1.05rem; line-height: 1;
     display: none; align-items: center; justify-content: center;
@@ -235,8 +246,10 @@
   }
   .tab-bar-wrap.peut-droite .tab-arrow-next { animation: rappel-scroll 1.3s ease-in-out 3; }
   @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
     .tab-bar-wrap.peut-droite .tab-arrow-next { animation: none; }
     .tab-bar { scroll-behavior: auto; }
+    .tab-panel.active { animation: none; }
   }
   .tab-btn {
     flex: 1 1 0;
@@ -291,12 +304,6 @@
     border-radius: var(--radius);
     padding: 1.4rem 1.2rem;
     text-align: center;
-  }
-  .card .icon {
-    width: 44px; height: 44px; border-radius: 50%;
-    background: var(--marine); color: var(--accent);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1.1rem; font-weight: 700; margin: 0 auto .7rem;
   }
   .card h3 { color: var(--marine); font-size: 1.02rem; font-weight: 700; margin-bottom: .35rem; }
   .card p { color: var(--gris); font-size: .87rem; }
@@ -372,13 +379,16 @@
     display: block; font-size: .92rem; color: rgba(255,255,255,.78);
     text-decoration: none; margin-bottom: .5rem;
   }
+  .footer-col a {
+    padding: .65rem 0; margin-bottom: 0;
+  }
   .footer-col a:hover { color: var(--accent); }
   .footer-brand h3 { color: var(--blanc); font-size: 1.2rem; font-weight: 600; margin-bottom: .6rem; }
   .footer-brand p { color: rgba(255,255,255,.6); font-size: .88rem; max-width: 260px; }
   .footer-bottom {
     border-top: 1px solid rgba(255,255,255,.12);
     padding-top: 1.2rem;
-    font-size: .78rem; color: rgba(255,255,255,.45);
+    font-size: .78rem; color: rgba(255,255,255,.58);
     text-align: center;
   }
 
@@ -397,11 +407,21 @@
 {
   "@context": "https://schema.org",
   "@type": "Service",
+  "name": "Cours particuliers de Maths et Physique-Chimie — Arthur Soulard",
   "serviceType": "Cours particuliers de Maths et Physique-Chimie",
+  "description": "Cours particuliers de Maths et Physique-Chimie, du collège à la terminale, en visio toute l'année ou en présentiel en Vendée et à Toulon.",
+  "url": "https://arthur-soulard.github.io/",
   "provider": {
     "@type": "Person",
     "name": "Arthur Soulard",
-    "url": "https://arthur-soulard.github.io/"
+    "url": "https://arthur-soulard.github.io/",
+    "telephone": "+33749055015",
+    "email": "arthursoulard1312@gmail.com",
+    "knowsLanguage": "fr",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "SeaTech — École d'ingénieurs de l'Université de Toulon"
+    }
   },
   "areaServed": [
     { "@type": "Place", "name": "Vendée" },
@@ -414,14 +434,43 @@
   "availableChannel": {
     "@type": "ServiceChannel",
     "availableLanguage": "fr",
-    "serviceUrl": "https://arthur-soulard.github.io/"
+    "serviceUrl": "https://arthur-soulard.github.io/",
+    "servicePhone": {
+      "@type": "ContactPoint",
+      "telephone": "+33749055015",
+      "contactType": "customer service",
+      "availableLanguage": "fr"
+    }
   },
-  "offers": {
-    "@type": "Offer",
-    "priceCurrency": "EUR",
-    "price": "20",
-    "description": "Cours particuliers de Maths et Physique-Chimie, du collège à la terminale, en visio ou en présentiel."
-  }
+  "offers": [
+    {
+      "@type": "Offer",
+      "name": "Séance d'1 heure",
+      "priceCurrency": "EUR",
+      "price": "20",
+      "availability": "https://schema.org/InStock",
+      "url": "https://arthur-soulard.github.io/",
+      "description": "Cours individuel d'une heure, en visio ou en présentiel."
+    },
+    {
+      "@type": "Offer",
+      "name": "Séance d'1h30",
+      "priceCurrency": "EUR",
+      "price": "29",
+      "availability": "https://schema.org/InStock",
+      "url": "https://arthur-soulard.github.io/",
+      "description": "Cours individuel d'une heure trente, en visio ou en présentiel."
+    },
+    {
+      "@type": "Offer",
+      "name": "Séance de 2 heures",
+      "priceCurrency": "EUR",
+      "price": "38",
+      "availability": "https://schema.org/InStock",
+      "url": "https://arthur-soulard.github.io/",
+      "description": "Cours individuel de deux heures, en visio ou en présentiel."
+    }
+  ]
 }
 </script>
 </head>
@@ -461,19 +510,19 @@
 <section class="tabs-section" id="tabs">
   <div class="wrap">
     <div class="tab-bar-wrap" id="tabBarWrap">
-      <div class="tab-bar" id="tabBar" role="tablist">
-        <button class="tab-btn active" data-tab="apropos">Qui suis-je</button>
-        <button class="tab-btn" data-tab="matieres">Matières</button>
-        <button class="tab-btn" data-tab="niveaux">Niveaux</button>
-        <button class="tab-btn" data-tab="organisation">Organisation</button>
-        <button class="tab-btn" data-tab="tarifs">Tarifs</button>
-        <button class="tab-btn" data-tab="paiement">Paiement</button>
+      <div class="tab-bar" id="tabBar" role="tablist" aria-label="Sections de la page">
+        <button type="button" class="tab-btn active" id="tab-apropos" data-tab="apropos" role="tab" aria-selected="true" aria-controls="panel-apropos">Qui suis-je</button>
+        <button type="button" class="tab-btn" id="tab-matieres" data-tab="matieres" role="tab" aria-selected="false" aria-controls="panel-matieres" tabindex="-1">Matières</button>
+        <button type="button" class="tab-btn" id="tab-niveaux" data-tab="niveaux" role="tab" aria-selected="false" aria-controls="panel-niveaux" tabindex="-1">Niveaux</button>
+        <button type="button" class="tab-btn" id="tab-organisation" data-tab="organisation" role="tab" aria-selected="false" aria-controls="panel-organisation" tabindex="-1">Organisation</button>
+        <button type="button" class="tab-btn" id="tab-tarifs" data-tab="tarifs" role="tab" aria-selected="false" aria-controls="panel-tarifs" tabindex="-1">Tarifs</button>
+        <button type="button" class="tab-btn" id="tab-paiement" data-tab="paiement" role="tab" aria-selected="false" aria-controls="panel-paiement" tabindex="-1">Paiement</button>
       </div>
       <button type="button" class="tab-arrow tab-arrow-prev" aria-label="Onglets précédents">&#8249;</button>
       <button type="button" class="tab-arrow tab-arrow-next" aria-label="Onglets suivants">&#8250;</button>
     </div>
 
-    <div class="tab-panel active" id="panel-apropos">
+    <div class="tab-panel active" id="panel-apropos" role="tabpanel" aria-labelledby="tab-apropos" tabindex="0">
       <div class="section-head">
         <span class="tag">Présentation</span>
         <h2>Qui suis-je ?</h2>
@@ -485,7 +534,7 @@
       </div>
     </div>
 
-    <div class="tab-panel" id="panel-matieres">
+    <div class="tab-panel" id="panel-matieres" role="tabpanel" aria-labelledby="tab-matieres" tabindex="0">
       <div class="section-head">
         <span class="tag">Contenu</span>
         <h2>Matières proposées</h2>
@@ -502,7 +551,7 @@
       </div>
     </div>
 
-    <div class="tab-panel" id="panel-niveaux">
+    <div class="tab-panel" id="panel-niveaux" role="tabpanel" aria-labelledby="tab-niveaux" tabindex="0">
       <div class="section-head">
         <span class="tag">Public</span>
         <h2>Niveaux accompagnés</h2>
@@ -515,7 +564,7 @@
       </div>
     </div>
 
-    <div class="tab-panel" id="panel-organisation">
+    <div class="tab-panel" id="panel-organisation" role="tabpanel" aria-labelledby="tab-organisation" tabindex="0">
       <div class="section-head">
         <span class="tag">Modalités</span>
         <h2>Organisation pratique</h2>
@@ -536,7 +585,7 @@
       </div>
     </div>
 
-    <div class="tab-panel" id="panel-tarifs">
+    <div class="tab-panel" id="panel-tarifs" role="tabpanel" aria-labelledby="tab-tarifs" tabindex="0">
       <div class="section-head">
         <span class="tag">Prix</span>
         <h2>Tarifs</h2>
@@ -561,7 +610,7 @@
       </div>
     </div>
 
-    <div class="tab-panel" id="panel-paiement">
+    <div class="tab-panel" id="panel-paiement" role="tabpanel" aria-labelledby="tab-paiement" tabindex="0">
       <div class="section-head">
         <span class="tag">Pratique</span>
         <h2>Modes de paiement</h2>
@@ -586,10 +635,10 @@
   </div>
 </section>
 
-<div class="modal-overlay" id="modalContact">
+<div class="modal-overlay" id="modalContact" role="dialog" aria-modal="true" aria-labelledby="modalContactTitre" aria-hidden="true">
   <div class="modal-box">
     <button type="button" class="modal-close" onclick="fermerContact()" aria-label="Fermer">&times;</button>
-    <h3>Me contacter</h3>
+    <h3 id="modalContactTitre">Me contacter</h3>
     <p class="modal-sub">Choisissez votre moyen de contact préféré.</p>
     <div class="modal-choices">
       <a class="modal-choice" href="https://mail.google.com/mail/?view=cm&fs=1&to=arthursoulard1312@gmail.com&su=Cours%20particuliers" target="_blank" rel="noopener">
@@ -617,6 +666,7 @@
       <div class="footer-col">
         <h4>Navigation</h4>
         <a href="#top">Accueil</a>
+        <a href="mentions-legales.html">Mentions légales</a>
       </div>
     </div>
     <div class="footer-bottom">
@@ -648,21 +698,45 @@
     document.fonts.ready.then(majIndicateursOnglets);
   }
 
-  function activerOnglet(nom) {
-    document.querySelectorAll('.tab-btn').forEach(function(b){ b.classList.remove('active'); });
-    document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
-    var bouton = document.querySelector('.tab-btn[data-tab="' + nom + '"]');
-    bouton.classList.add('active');
-    document.getElementById('panel-' + nom).classList.add('active');
+  var onglets = [].slice.call(document.querySelectorAll('.tab-btn'));
+
+  function activerOnglet(nom, donnerLeFocus) {
+    onglets.forEach(function(b){
+      var actif = b.dataset.tab === nom;
+      b.classList.toggle('active', actif);
+      b.setAttribute('aria-selected', actif ? 'true' : 'false');
+      // tabindex glissant : un seul onglet dans l'ordre de tabulation
+      b.setAttribute('tabindex', actif ? '0' : '-1');
+    });
+    document.querySelectorAll('.tab-panel').forEach(function(p){
+      p.classList.toggle('active', p.id === 'panel-' + nom);
+    });
+    var bouton = document.getElementById('tab-' + nom);
+    if (donnerLeFocus) { bouton.focus(); }
     if (bouton.scrollIntoView) {
       bouton.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
     }
   }
 
-  document.querySelectorAll('.tab-btn').forEach(function(btn){
+  onglets.forEach(function(btn){
     btn.addEventListener('click', function(){
       activerOnglet(btn.dataset.tab);
     });
+  });
+
+  // Navigation au clavier dans la barre d'onglets (fleches, Debut, Fin)
+  barreOnglets.addEventListener('keydown', function(e){
+    var i = onglets.indexOf(document.activeElement);
+    if (i === -1) { return; }
+    var cible = null;
+    if (e.key === 'ArrowRight') { cible = onglets[(i + 1) % onglets.length]; }
+    else if (e.key === 'ArrowLeft') { cible = onglets[(i - 1 + onglets.length) % onglets.length]; }
+    else if (e.key === 'Home') { cible = onglets[0]; }
+    else if (e.key === 'End') { cible = onglets[onglets.length - 1]; }
+    if (cible) {
+      e.preventDefault();
+      activerOnglet(cible.dataset.tab, true);
+    }
   });
 
   function allerAuxTarifs() {
@@ -670,16 +744,56 @@
     document.getElementById('tabs').scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 
+  var modale = document.getElementById('modalContact');
+  var dernierFocus = null;
+
+  function elementsFocusables() {
+    return [].slice.call(modale.querySelectorAll('a[href], button'));
+  }
+
   function ouvrirContact() {
-    document.getElementById('modalContact').classList.add('open');
+    dernierFocus = document.activeElement;
+    modale.classList.add('open');
+    modale.setAttribute('aria-hidden', 'false');
+    // on bloque le defilement du fond sans decaler la mise en page
+    var largeurBarre = window.innerWidth - document.documentElement.clientWidth;
+    document.body.style.overflow = 'hidden';
+    if (largeurBarre > 0) { document.body.style.paddingRight = largeurBarre + 'px'; }
+    var premier = elementsFocusables()[0];
+    if (premier) { premier.focus(); }
   }
 
   function fermerContact() {
-    document.getElementById('modalContact').classList.remove('open');
+    modale.classList.remove('open');
+    modale.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+    document.body.style.paddingRight = '';
+    if (dernierFocus && dernierFocus.focus) { dernierFocus.focus(); }
+    dernierFocus = null;
   }
 
-  document.getElementById('modalContact').addEventListener('click', function(e){
-    if (e.target === this) fermerContact();
+  modale.addEventListener('click', function(e){
+    if (e.target === this) { fermerContact(); }
+  });
+
+  document.addEventListener('keydown', function(e){
+    if (!modale.classList.contains('open')) { return; }
+    if (e.key === 'Escape') {
+      fermerContact();
+      return;
+    }
+    if (e.key !== 'Tab') { return; }
+    // piege au clavier : la tabulation tourne en boucle dans la modale
+    var f = elementsFocusables();
+    if (!f.length) { return; }
+    var premier = f[0], dernier = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === premier) {
+      e.preventDefault(); dernier.focus();
+    } else if (!e.shiftKey && document.activeElement === dernier) {
+      e.preventDefault(); premier.focus();
+    } else if (!modale.contains(document.activeElement)) {
+      e.preventDefault(); premier.focus();
+    }
   });
 </script>
 
