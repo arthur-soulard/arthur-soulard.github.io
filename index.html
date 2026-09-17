@@ -59,7 +59,16 @@
     --gris: #5c6b7a;
     --gris-clair: #e4e8ec;
     --blanc: #ffffff;
+    --accent-clair: #7fd4ce;
     --radius: 14px;
+    --radius-lg: 18px;
+    /* Ombres en deux couches : un contact net, une diffusion large.
+       Plus juste qu'une seule ombre floue, et plus discret. */
+    --ombre-douce: 0 1px 2px rgba(13,36,56,.04), 0 4px 12px rgba(13,36,56,.06);
+    --ombre-portee: 0 2px 4px rgba(13,36,56,.05), 0 14px 32px rgba(13,36,56,.11);
+    --verre: rgba(255,255,255,.92);
+    --verre-bord: rgba(255,255,255,.6);
+    --transi: .2s cubic-bezier(.4,0,.2,1);
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -99,7 +108,9 @@
   /* MODAL CONTACT */
   .modal-overlay {
     display: none; position: fixed; inset: 0; z-index: 100;
-    background: rgba(13,36,56,.6);
+    background: rgba(13,36,56,.55);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
     align-items: center; justify-content: center;
     padding: 1.4rem;
   }
@@ -110,6 +121,12 @@
     padding: 1.8rem 1.6rem;
     text-align: center;
     position: relative;
+    box-shadow: 0 24px 60px rgba(13,36,56,.38);
+    animation: modal-entree .22s cubic-bezier(.4,0,.2,1);
+  }
+  @keyframes modal-entree {
+    from { opacity: 0; transform: translateY(12px) scale(.98); }
+    to   { opacity: 1; transform: none; }
   }
   .modal-box h3 {
     color: var(--marine); font-size: 1.2rem; margin-bottom: .3rem;
@@ -124,7 +141,7 @@
     font-weight: 700; font-size: .95rem;
     transition: .15s;
   }
-  .modal-choice:hover { border-color: var(--accent); background: var(--creme); }
+  .modal-choice:hover { border-color: var(--accent); background: var(--creme); transform: translateX(3px); }
   .modal-choice .modal-icon {
     width: 34px; height: 34px; border-radius: 50%; flex-shrink: 0;
     background: var(--marine); color: var(--accent);
@@ -140,17 +157,27 @@
 
   /* HERO */
   .hero {
-    background: linear-gradient(160deg, var(--marine) 0%, var(--marine-clair) 100%);
+    /* Trois couches : deux halos colores poses sur le degrade de base.
+       Le marine reste dominant, les halos ne font que casser l'aplat. */
+    background:
+      radial-gradient(110% 85% at 8% 0%, rgba(79,179,172,.20) 0%, transparent 55%),
+      radial-gradient(85% 75% at 100% 8%, rgba(41,124,119,.28) 0%, transparent 60%),
+      linear-gradient(160deg, var(--marine) 0%, var(--marine-clair) 100%);
     color: var(--blanc);
-    padding: 3.5rem 0 3rem;
+    padding: 3.5rem 0 4.8rem;
     position: relative;
     overflow: hidden;
   }
   .hero::after {
     content: "";
-    position: absolute; top: -80px; right: -80px;
-    width: 280px; height: 280px; border-radius: 50%;
-    background: radial-gradient(circle, rgba(79,179,172,.2), transparent 70%);
+    position: absolute; top: -90px; right: -90px;
+    width: 320px; height: 320px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(127,212,206,.22), transparent 70%);
+    animation: derive 18s ease-in-out infinite;
+  }
+  @keyframes derive {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50%      { transform: translate(-26px, 22px) scale(1.08); }
   }
   .hero-inner {
     max-width: 1080px; margin: 0 auto; padding: 0 1.4rem;
@@ -161,9 +188,15 @@
   .hero-text { flex: 1 1 340px; min-width: 280px; }
   .eyebrow {
     display: inline-block;
-    color: var(--accent); font-size: .8rem; font-weight: 600;
+    color: var(--accent-clair); font-size: .8rem; font-weight: 600;
     letter-spacing: .08em; text-transform: uppercase;
     margin-bottom: .9rem;
+    /* Pastille de verre : le fond du hero transparait sous le texte */
+    background: rgba(255,255,255,.09);
+    border: 1px solid rgba(255,255,255,.18);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    padding: .4rem .9rem; border-radius: 999px;
   }
   .hero h1 {
     font-size: clamp(1.9rem, 4.5vw, 2.7rem);
@@ -183,10 +216,23 @@
     text-decoration: none; transition: .15s;
     cursor: pointer; font-family: "Inter", sans-serif;
   }
-  .btn-primary { background: var(--accent); color: var(--marine); border: 1.5px solid var(--accent); }
-  .btn-primary:hover { background: var(--accent-dark); color: var(--blanc); border-color: var(--accent-dark); }
+  .btn:hover { transform: translateY(-2px); }
+  .btn:active { transform: translateY(0); }
+  /* Le degrade va du plus clair vers l'accent : le texte marine garde
+     un contraste de 6.3:1 sur la teinte la plus sombre du bouton. */
+  .btn-primary {
+    background: linear-gradient(135deg, #63c7c0 0%, var(--accent) 100%);
+    color: var(--marine); border: 1.5px solid var(--accent);
+    box-shadow: 0 4px 14px rgba(79,179,172,.28);
+  }
+  .btn-primary:hover {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+    color: var(--blanc); border-color: var(--accent-dark);
+    box-shadow: 0 8px 22px rgba(41,124,119,.4);
+  }
   .btn-ghost {
     background: var(--blanc); color: var(--marine); border: 1.5px solid var(--blanc);
+    box-shadow: 0 4px 14px rgba(13,36,56,.22);
   }
   .btn-ghost:hover { background: var(--accent); border-color: var(--accent); color: var(--marine); }
 
@@ -194,7 +240,7 @@
     flex: 0 0 auto; width: 170px; height: 170px;
     border-radius: 50%; overflow: hidden;
     border: 3px solid var(--accent);
-    box-shadow: 0 12px 30px rgba(0,0,0,.3);
+    box-shadow: 0 12px 30px rgba(0,0,0,.3), 0 0 0 10px rgba(127,212,206,.10);
     background: #ccc;
   }
   .hero-photo img {
@@ -204,14 +250,22 @@
   }
 
   /* STATS BAR */
+  /* Le bandeau chevauche le bas du hero : panneau de verre pose a cheval
+     sur la couture entre le marine et la creme. */
   .stats {
-    background: var(--blanc);
-    border-bottom: 1px solid var(--gris-clair);
+    position: relative; z-index: 2;
+    margin-top: -2.6rem; padding: 0 1.4rem;
   }
   .stats-inner {
-    max-width: 1080px; margin: 0 auto; padding: 1.6rem 1.4rem;
+    max-width: 880px; margin: 0 auto; padding: 1.5rem 1.4rem;
     display: flex; justify-content: center; gap: 3.5rem;
     text-align: center; flex-wrap: wrap;
+    background: var(--verre);
+    -webkit-backdrop-filter: blur(16px) saturate(1.3);
+    backdrop-filter: blur(16px) saturate(1.3);
+    border: 1px solid var(--verre-bord);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--ombre-portee);
   }
   .stat-num {
     font-family: "Fraunces", serif; font-weight: 600;
@@ -222,7 +276,7 @@
   }
 
   /* INTRO (texte visible des le chargement, hors onglets) */
-  .intro { padding: 2.6rem 0 .6rem; }
+  .intro { padding: 3.2rem 0 .6rem; }
   .intro h2 {
     font-size: clamp(1.4rem, 3vw, 1.75rem); font-weight: 600;
     color: var(--marine); margin-bottom: .7rem;
@@ -288,6 +342,13 @@
     .tab-bar-wrap.peut-droite .tab-arrow-next { animation: none; }
     .tab-bar { scroll-behavior: auto; }
     .tab-panel.active { animation: none; }
+    .hero::after, .modal-box { animation: none; }
+    .js .reveal { transform: none; transition: none; }
+    .btn:hover, .modal-choice:hover,
+    .card:hover, .orga-card:hover, .tarif-card:hover, .etape-card:hover {
+      transform: none;
+    }
+    .cta-flottant { transition: none; }
   }
   .tab-btn {
     flex: 1 1 0;
@@ -300,8 +361,12 @@
     text-align: center;
     transition: .15s;
   }
-  .tab-btn:hover { color: var(--marine); }
-  .tab-btn.active { color: var(--marine); border-color: var(--accent); }
+  .tab-btn { border-radius: 10px 10px 0 0; }
+  .tab-btn:hover { color: var(--marine); background: rgba(13,36,56,.04); }
+  .tab-btn.active {
+    color: var(--marine); border-color: var(--accent);
+    background: linear-gradient(180deg, rgba(79,179,172,.12), rgba(79,179,172,0));
+  }
 
   .tab-panel { display: none; }
   .tab-panel.active { display: block; animation: fadein .3s ease; }
@@ -400,6 +465,94 @@
   }
   .tarif-detail { font-size: .8rem; color: var(--gris); }
 
+  /* ELEVATION : une ombre douce au repos, une ombre portee au survol.
+     Les bordures plates cedent la place a de la profondeur. */
+  .about-card, .card, .orga-card, .tarif-card, .niveaux-list, .etape-card, .faq-item {
+    box-shadow: var(--ombre-douce);
+    transition: transform var(--transi), box-shadow var(--transi), border-color var(--transi);
+  }
+  @media (hover: hover) {
+    .card:hover, .orga-card:hover, .tarif-card:hover, .etape-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--ombre-portee);
+      border-color: rgba(79,179,172,.55);
+    }
+  }
+  .tarif-card { position: relative; overflow: hidden; }
+  .tarif-card::before {
+    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--accent-clair), var(--accent-dark));
+  }
+
+  /* ETAPES */
+  .etapes { padding: 2.8rem 0 .4rem; }
+  .etapes-grid {
+    list-style: none;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+  }
+  .etape-card {
+    background: var(--blanc);
+    border: 1px solid var(--gris-clair);
+    border-radius: var(--radius);
+    padding: 1.4rem 1.3rem;
+  }
+  .etape-num {
+    display: flex; align-items: center; justify-content: center;
+    width: 38px; height: 38px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--marine), var(--marine-clair));
+    color: var(--accent-clair);
+    font-family: "Fraunces", serif; font-weight: 600; font-size: 1.05rem;
+    margin-bottom: .85rem;
+  }
+  .etape-card h3 { color: var(--marine); font-size: 1.02rem; margin-bottom: .35rem; }
+  .etape-card p { color: var(--gris); font-size: .9rem; }
+
+  /* FAQ */
+  .faq { padding: 1.2rem 0 3.6rem; }
+  .faq-list { display: grid; gap: .7rem; }
+  .faq-item {
+    background: var(--blanc);
+    border: 1px solid var(--gris-clair);
+    border-radius: var(--radius);
+  }
+  .faq-item summary {
+    cursor: pointer; list-style: none;
+    padding: 1rem 3.2rem 1rem 1.3rem;
+    font-weight: 700; color: var(--marine); font-size: .98rem;
+    border-radius: var(--radius);
+    position: relative;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary:hover { background: rgba(13,36,56,.03); }
+  /* Chevron dessine en CSS : pas d'image, pas de police d'icones */
+  .faq-item summary::after {
+    content: ""; position: absolute; right: 1.4rem; top: 50%;
+    width: 9px; height: 9px; margin-top: -7px;
+    border-right: 2px solid var(--gris); border-bottom: 2px solid var(--gris);
+    transform: rotate(45deg); transition: transform var(--transi);
+  }
+  .faq-item[open] summary::after { transform: rotate(-135deg); margin-top: -2px; }
+  .faq-reponse { padding: 0 1.4rem 1.2rem; color: var(--gris); font-size: .93rem; }
+
+  /* APPARITION AU DEFILEMENT : neutralisee si le script ne tourne pas.
+     Le bloc glisse, il ne s'estompe pas : un fondu d'opacite ferait passer
+     le gris du texte a 4.1:1 le temps de la transition (mesure axe-core).
+     Seule la position bouge, le contraste reste juste a chaque image. */
+  .js .reveal { transform: translateY(18px); transition: transform .45s cubic-bezier(.4,0,.2,1); }
+  .js .reveal.vu { transform: none; }
+
+  /* BOUTON DE CONTACT FLOTTANT (mobile) : apparait une fois l'en-tete passe,
+     s'efface des que le pied de page arrive pour ne rien recouvrir. */
+  .cta-flottant {
+    display: none; position: fixed; z-index: 90;
+    right: 1rem; bottom: 1rem;
+    bottom: calc(1rem + env(safe-area-inset-bottom, 0px));
+    visibility: hidden; opacity: 0; transform: translateY(18px);
+    transition: opacity var(--transi), transform var(--transi), visibility var(--transi);
+  }
+  .cta-flottant.visible { visibility: visible; opacity: 1; transform: none; }
+  .cta-flottant .btn { box-shadow: 0 8px 26px rgba(13,36,56,.3); }
+
   /* CONTACT / FOOTER */
   footer {
     background: var(--marine); color: rgba(255,255,255,.85);
@@ -435,8 +588,19 @@
     @page { margin: 1.5cm; }
     body { background: #fff; color: #000; font-size: 11pt; line-height: 1.45; }
     .hero, footer { background: #fff !important; color: #000 !important; }
-    .hero::after, .hero-photo, .saut-contenu,
-    .tab-bar-wrap, .cta-row, .modal-overlay { display: none !important; }
+    .hero::after, .hero-photo, .saut-contenu, .tab-bar-wrap, .cta-row,
+    .modal-overlay, .cta-flottant, .tarif-card::before,
+    .faq-item summary::after { display: none !important; }
+    .eyebrow { background: none; border: none; padding: 0; color: #000; }
+    .stats { margin-top: 0; padding: 0; }
+    .stats-inner {
+      background: none; box-shadow: none; border: 1px solid #999;
+      -webkit-backdrop-filter: none; backdrop-filter: none;
+    }
+    .etape-num { background: none !important; color: #000; border: 1px solid #999; }
+    .js .reveal { transform: none !important; }
+    /* la FAQ s'imprime depliee (le script ouvre aussi les blocs au beforeprint) */
+    .faq-item:not([open]) > *:not(summary) { display: block !important; }
     .hero h1 em, .section-head .tag, .footer-col h4 { color: #000; }
     .hero p.lead, .footer-col p, .footer-col a, .footer-brand p, .footer-bottom {
       color: #000 !important;
@@ -445,8 +609,9 @@
     .tab-panel { display: block !important; animation: none !important; }
     .tab-panel + .tab-panel { margin-top: 1.2rem; }
     .tabs-section { padding: 1rem 0 0; }
-    .about-card, .card, .orga-card, .tarif-card, .niveaux-list {
-      border: 1px solid #999; break-inside: avoid;
+    .about-card, .card, .orga-card, .tarif-card, .niveaux-list,
+    .etape-card, .faq-item {
+      border: 1px solid #999; break-inside: avoid; box-shadow: none;
     }
     .section-head h2 { break-after: avoid; }
   }
@@ -458,12 +623,14 @@
     /* Le texte d'accroche etant plus long, on resserre l'en-tete pour que
        le bouton "Me contacter" reste visible sans faire defiler, y compris
        sur les ecrans de 667 px de haut. */
-    .hero { padding: 2.2rem 0 2.4rem; }
+    .hero { padding: 2.2rem 0 4.2rem; }
     .hero-inner { flex-direction: column-reverse; text-align: center; gap: 1.5rem; }
     .hero-photo { width: 124px; height: 124px; }
     .hero p.lead { max-width: none; }
     .cta-row { justify-content: center; }
     .stats-inner { gap: 2rem; }
+    .etapes-grid { grid-template-columns: 1fr; }
+    .cta-flottant { display: block; }
     .tab-btn { flex: 0 0 auto; padding: .8rem 1.1rem; }
   }
 </style>
@@ -675,9 +842,70 @@
           "url": "https://arthur-soulard.github.io/"
         }
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://arthur-soulard.github.io/#faq",
+      "inLanguage": "fr-FR",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "À quels niveaux et dans quelles matières donnez-vous cours ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "De la 6ᵉ à la terminale, en mathématiques et en physique-chimie. Cela couvre la préparation du brevet, la seconde générale et technologique, les enseignements de spécialité Mathématiques et Physique-Chimie en première et en terminale, l'épreuve anticipée de mathématiques du tronc commun, et la préparation du bac."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Les cours ont-ils lieu à domicile ou en visio ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Les deux. La visio est disponible toute l'année, partout en France. À domicile, je me déplace dans un rayon de 20 km autour de Treize-Septiers et Montaigu-Vendée pendant les vacances scolaires, et à Toulon et ses environs le week-end selon disponibilité."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment se déroule un cours en visio ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Avec un partage d'écran, un tableau blanc et vos exercices sous les yeux. C'est la formule la plus souple pour un suivi hebdomadaire régulier, puisqu'elle ne dépend ni des vacances ni de la distance."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Combien coûte une séance ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "20 € pour une heure, 29 € pour une heure trente et 38 € pour deux heures. Le tarif est le même en visio et en présentiel, et il s'agit toujours d'un cours individuel."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment se passe le règlement ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Au choix : CESU (Chèque Emploi Service Universel), virement bancaire ou espèces. Mon activité est déclarée via le CESU déclaratif."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Comment vous contacter pour organiser un premier cours ?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Par téléphone ou par SMS au 07 49 05 50 15, par WhatsApp, ou par e-mail à arthursoulard1312@gmail.com. Dites-moi le niveau, la matière et ce qui pose problème, et on cale une première séance."
+          }
+        }
+      ]
     }
   ]
 }
+</script>
+
+<script>
+  /* Marque le document des que le script tourne : les blocs qui apparaissent
+     au defilement ne sont masques que si JavaScript est bien actif. */
+  document.documentElement.classList.add('js');
 </script>
 </head>
 <body>
@@ -721,6 +949,32 @@
   <div class="wrap">
     <h2>Du soutien scolaire qui s'adapte à votre enfant</h2>
     <p>Que ce soit pour préparer le brevet, reprendre les bases en seconde ou viser une bonne note à la spécialité maths du bac, je construis chaque séance à partir de ce qui bloque vraiment. On refait les exercices ensemble, on identifie les erreurs qui reviennent, et on installe les méthodes.</p>
+  </div>
+</section>
+
+<section class="etapes" aria-labelledby="titre-etapes">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Déroulé</span>
+      <h2 id="titre-etapes">Comment se passe un cours</h2>
+    </div>
+    <ol class="etapes-grid" role="list">
+      <li class="etape-card reveal">
+        <span class="etape-num" aria-hidden="true">1</span>
+        <h3>On fait le point</h3>
+        <p>Un appel ou un message suffit pour me dire le niveau, la matière et ce qui coince : un chapitre précis, des bases à reprendre, ou une échéance comme le brevet ou le bac.</p>
+      </li>
+      <li class="etape-card reveal">
+        <span class="etape-num" aria-hidden="true">2</span>
+        <h3>La séance part de ses cours</h3>
+        <p>On travaille sur ses exercices, son dernier contrôle et le chapitre en cours. On les refait ensemble et on repère les erreurs qui reviennent d'une copie à l'autre.</p>
+      </li>
+      <li class="etape-card reveal">
+        <span class="etape-num" aria-hidden="true">3</span>
+        <h3>On installe les méthodes</h3>
+        <p>L'objectif n'est pas de finir l'exercice du jour, mais de savoir refaire le suivant seul. On repart avec une méthode claire, applicable au prochain contrôle.</p>
+      </li>
+    </ol>
   </div>
 </section>
 
@@ -851,6 +1105,41 @@
 
   </div>
 </section>
+
+<section class="faq" id="faq" aria-labelledby="titre-faq">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Questions fréquentes</span>
+      <h2 id="titre-faq">Ce qu'on me demande le plus souvent</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item reveal">
+        <summary>À quels niveaux et dans quelles matières donnez-vous cours ?</summary>
+        <div class="faq-reponse"><p>De la 6ᵉ à la terminale, en mathématiques et en physique-chimie. Cela couvre la préparation du brevet, la seconde générale et technologique, les enseignements de spécialité Mathématiques et Physique-Chimie en première et en terminale, l'épreuve anticipée de mathématiques du tronc commun, et la préparation du bac.</p></div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Les cours ont-ils lieu à domicile ou en visio ?</summary>
+        <div class="faq-reponse"><p>Les deux. La visio est disponible toute l'année, partout en France. À domicile, je me déplace dans un rayon de 20 km autour de Treize-Septiers et Montaigu-Vendée pendant les vacances scolaires, et à Toulon et ses environs le week-end selon disponibilité.</p></div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Comment se déroule un cours en visio ?</summary>
+        <div class="faq-reponse"><p>Avec un partage d'écran, un tableau blanc et vos exercices sous les yeux. C'est la formule la plus souple pour un suivi hebdomadaire régulier, puisqu'elle ne dépend ni des vacances ni de la distance.</p></div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Combien coûte une séance ?</summary>
+        <div class="faq-reponse"><p>20 € pour une heure, 29 € pour une heure trente et 38 € pour deux heures. Le tarif est le même en visio et en présentiel, et il s'agit toujours d'un cours individuel.</p></div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Comment se passe le règlement ?</summary>
+        <div class="faq-reponse"><p>Au choix : CESU (Chèque Emploi Service Universel), virement bancaire ou espèces. Mon activité est déclarée via le CESU déclaratif.</p></div>
+      </details>
+      <details class="faq-item reveal">
+        <summary>Comment vous contacter pour organiser un premier cours ?</summary>
+        <div class="faq-reponse"><p>Par téléphone ou par SMS au 07 49 05 50 15, par WhatsApp, ou par e-mail à arthursoulard1312@gmail.com. Dites-moi le niveau, la matière et ce qui pose problème, et on cale une première séance.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
 </main>
 
 <div class="modal-overlay" id="modalContact" role="dialog" aria-modal="true" aria-labelledby="modalContactTitre" aria-hidden="true">
@@ -875,6 +1164,10 @@
   </div>
 </div>
 
+<div class="cta-flottant" id="ctaFlottant">
+  <button type="button" class="btn btn-primary" id="ctaFlottantBtn">Me contacter</button>
+</div>
+
 <footer id="contact">
   <div class="wrap">
     <div class="footer-grid">
@@ -890,6 +1183,7 @@
       <div class="footer-col">
         <h4>Navigation</h4>
         <a href="#top">Accueil</a>
+        <a href="#faq">Questions fréquentes</a>
         <a href="mentions-legales.html">Mentions légales</a>
       </div>
     </div>
@@ -1045,6 +1339,58 @@
     } else if (!modale.contains(document.activeElement)) {
       e.preventDefault(); premier.focus();
     }
+  });
+
+  // --------------------------------------------------------------------
+  // Apparition au defilement. Chaque bloc marque .reveal se devoile quand
+  // il entre dans la fenetre, puis on cesse de l'observer : aucun calcul
+  // au defilement une fois la page parcourue.
+  var aReveler = [].slice.call(document.querySelectorAll('.reveal'));
+  if (!('IntersectionObserver' in window)) {
+    aReveler.forEach(function(el){ el.classList.add('vu'); });
+  } else {
+    var guetteur = new IntersectionObserver(function(entrees){
+      entrees.forEach(function(e){
+        if (!e.isIntersecting) { return; }
+        e.target.classList.add('vu');
+        guetteur.unobserve(e.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px' });
+    aReveler.forEach(function(el){ guetteur.observe(el); });
+  }
+
+  // --------------------------------------------------------------------
+  // Bouton de contact flottant (mobile). Il apparait une fois l'en-tete
+  // depasse et s'efface des que le pied de page arrive, ou le telephone
+  // et l'e-mail sont deja affiches.
+  var ctaFlottant = document.getElementById('ctaFlottant');
+  if (ctaFlottant && 'IntersectionObserver' in window) {
+    var horsEntete = false, surPied = false;
+    var majCtaFlottant = function() {
+      ctaFlottant.classList.toggle('visible', horsEntete && !surPied);
+    };
+    new IntersectionObserver(function(e){
+      horsEntete = !e[0].isIntersecting;
+      majCtaFlottant();
+    }).observe(document.querySelector('.hero'));
+    new IntersectionObserver(function(e){
+      surPied = e[0].isIntersecting;
+      majCtaFlottant();
+    }).observe(document.querySelector('footer'));
+    document.getElementById('ctaFlottantBtn').addEventListener('click', ouvrirContact);
+  }
+
+  // --------------------------------------------------------------------
+  // Impression : la FAQ est depliee avant l'apercu, puis chaque bloc
+  // retrouve son etat d'origine.
+  var blocsFaq = [].slice.call(document.querySelectorAll('.faq-item'));
+  var faqAvantImpression = [];
+  window.addEventListener('beforeprint', function(){
+    faqAvantImpression = blocsFaq.map(function(d){ return d.open; });
+    blocsFaq.forEach(function(d){ d.open = true; });
+  });
+  window.addEventListener('afterprint', function(){
+    blocsFaq.forEach(function(d, i){ d.open = faqAvantImpression[i]; });
   });
 </script>
 
