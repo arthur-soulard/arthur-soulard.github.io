@@ -455,7 +455,12 @@
     .cards-grid, .cards-grid.cols-3 { grid-template-columns: 1fr; }
     .tarifs-grid { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; gap: 1.6rem; }
-    .hero-inner { flex-direction: column-reverse; text-align: center; }
+    /* Le texte d'accroche etant plus long, on resserre l'en-tete pour que
+       le bouton "Me contacter" reste visible sans faire defiler, y compris
+       sur les ecrans de 667 px de haut. */
+    .hero { padding: 2.2rem 0 2.4rem; }
+    .hero-inner { flex-direction: column-reverse; text-align: center; gap: 1.5rem; }
+    .hero-photo { width: 124px; height: 124px; }
     .hero p.lead { max-width: none; }
     .cta-row { justify-content: center; }
     .stats-inner { gap: 2rem; }
@@ -685,9 +690,9 @@
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-text">
-      <span class="eyebrow">Cours de Maths &amp; Physique-Chimie</span>
+      <span class="eyebrow">Cours particuliers de maths et physique-chimie &middot; Vendée, Toulon et&nbsp;visio</span>
       <h1>Comprendre les maths et la physique-chimie, <em>pour de bon</em>.</h1>
-      <p class="lead">Étudiant en école d'ingénieur à SeaTech Toulon, je vous accompagne du collège à la terminale, en visio toute l'année ou en présentiel selon les périodes.</p>
+      <p class="lead">Étudiant en école d'ingénieur à SeaTech Toulon, je donne des cours particuliers de mathématiques et de physique-chimie du collège à la terminale. À domicile en Vendée, autour de Treize-Septiers et Montaigu, à Toulon le week-end, ou en visio partout en France toute l'année.</p>
       <div class="cta-row">
         <button type="button" class="btn btn-primary" onclick="ouvrirContact()">Me contacter</button>
         <button type="button" class="btn btn-ghost" onclick="allerAuxTarifs()">Voir les tarifs</button>
