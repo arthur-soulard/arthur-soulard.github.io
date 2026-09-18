@@ -468,11 +468,8 @@
     background: linear-gradient(90deg, var(--accent-clair), var(--accent-dark));
   }
 
-  /* PRESENTATION */
-  .apropos { padding: 2.6rem 0 .4rem; }
-
   /* ETAPES */
-  .etapes { padding: 2.6rem 0 .4rem; }
+  .etapes { padding: 2.8rem 0 .4rem; }
   .etapes-grid {
     list-style: none;
     display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
@@ -939,20 +936,6 @@
   </div>
 </section>
 
-<section class="apropos" aria-labelledby="titre-apropos">
-  <div class="wrap">
-    <div class="section-head">
-      <span class="tag">Présentation</span>
-      <h2 id="titre-apropos">Qui suis-je&nbsp;?</h2>
-    </div>
-    <div class="about-card">
-      <p>Originaire de Treize-Septiers, j'ai intégré SeaTech Toulon en première année après une prépa MP au lycée Saint-François d'Assise.</p>
-      <p>Passionné par les mathématiques et la physique, j'ai toujours aimé expliquer, reformuler et trouver la bonne approche pour chaque élève. Titulaire d'un bac mention bien avec les spécialités Maths et Physique-Chimie, je connais bien les programmes du lycée.</p>
-      <p>Délégué de classe quatre années consécutives, je suis à l'écoute et patient. Mon objectif&nbsp;: vous aider à vraiment comprendre les notions pour décrocher une meilleure note au brevet ou au bac, ou simplement gagner en confiance sur la matière.</p>
-    </div>
-  </div>
-</section>
-
 <section class="etapes" aria-labelledby="titre-etapes">
   <div class="wrap">
     <div class="section-head">
@@ -984,6 +967,7 @@
     <div class="tab-bar-wrap" id="tabBarWrap">
       <div class="tab-bar" id="tabBar" role="tablist" aria-label="Sections de la page">
         <button type="button" class="tab-btn active" id="tab-matieres" data-tab="matieres" role="tab" aria-selected="true" aria-controls="panel-matieres">Matières</button>
+        <button type="button" class="tab-btn" id="tab-apropos" data-tab="apropos" role="tab" aria-selected="false" aria-controls="panel-apropos" tabindex="-1">Qui suis-je</button>
         <button type="button" class="tab-btn" id="tab-niveaux" data-tab="niveaux" role="tab" aria-selected="false" aria-controls="panel-niveaux" tabindex="-1">Niveaux</button>
         <button type="button" class="tab-btn" id="tab-organisation" data-tab="organisation" role="tab" aria-selected="false" aria-controls="panel-organisation" tabindex="-1">Organisation</button>
         <button type="button" class="tab-btn" id="tab-tarifs" data-tab="tarifs" role="tab" aria-selected="false" aria-controls="panel-tarifs" tabindex="-1">Tarifs</button>
@@ -1007,6 +991,18 @@
           <h3 class="matiere-titre">Physique-Chimie</h3>
           <p>Exercices personnalisés, explications de cours, méthodes et astuces.</p>
         </div>
+      </div>
+    </div>
+
+    <div class="tab-panel" id="panel-apropos" role="tabpanel" aria-labelledby="tab-apropos" tabindex="0">
+      <div class="section-head">
+        <span class="tag">Présentation</span>
+        <h2>Qui suis-je&nbsp;?</h2>
+      </div>
+      <div class="about-card">
+        <p>Originaire de Treize-Septiers, j'ai intégré SeaTech Toulon en première année après une prépa MP au lycée Saint-François d'Assise.</p>
+        <p>Passionné par les mathématiques et la physique, j'ai toujours aimé expliquer, reformuler et trouver la bonne approche pour chaque élève. Titulaire d'un bac mention bien avec les spécialités Maths et Physique-Chimie, je connais bien les programmes du lycée.</p>
+        <p>Délégué de classe quatre années consécutives, je suis à l'écoute et patient. Mon objectif&nbsp;: vous aider à vraiment comprendre les notions pour décrocher une meilleure note au brevet ou au bac, ou simplement gagner en confiance sur la matière.</p>
       </div>
     </div>
 
