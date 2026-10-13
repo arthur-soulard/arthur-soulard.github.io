@@ -26,7 +26,7 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta name="theme-color" content="#0d2438">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' https://gc.zgo.at; img-src 'self' data: https://arthur-soulard.goatcounter.com; font-src 'self'; connect-src 'self' https://arthur-soulard.goatcounter.com; base-uri 'self'; form-action 'none'; object-src 'none'">
 <meta name="google-site-verification" content="41PgtaEMhJLDMlWhQVJV4a-S8M6sK89P17dyRRVTLLc" />
 <link rel="preload" href="fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/fraunces-latin-var.woff2" as="font" type="font/woff2" crossorigin>
@@ -1183,30 +1183,19 @@
 
 <!--
   ============================================================================
-  MESURE D'AUDIENCE - A ACTIVER (il manque uniquement ton code de compte)
+  MESURE D'AUDIENCE : GoatCounter, compte "arthur-soulard" (sans cookie)
   ============================================================================
-  Aujourd'hui le site ne mesure rien : impossible de savoir combien de
-  visiteurs viennent, d'ou ils arrivent, ni si le bouton "Me contacter" est
-  clique. GoatCounter est gratuit pour un usage personnel, sans cookie
-  (donc toujours aucun bandeau a afficher) et n'envoie rien a Google.
-
-  Pour l'activer, trois etapes :
-
-  1. Creer un compte sur https://www.goatcounter.com/signup
-     et choisir un identifiant, par exemple "arthur-soulard".
-
-  2. Decommenter la ligne <script> ci-dessous et remplacer MONCODE
-     par cet identifiant.
-
-  3. Ajouter les deux autorisations a la Content-Security-Policy en haut
-     de ce fichier, sinon le script sera bloque :
-       script-src  ... ajouter   https://gc.zgo.at
-       img-src     ... ajouter   https://MONCODE.goatcounter.com
-
-  <script data-goatcounter="https://MONCODE.goatcounter.com/count"
-          async src="//gc.zgo.at/count.js"></script>
+  Statistiques : https://arthur-soulard.goatcounter.com
+  La Content-Security-Policy en haut de ce fichier autorise :
+    script-src   https://gc.zgo.at                      (le script count.js)
+    connect-src  https://arthur-soulard.goatcounter.com  (envoi des visites)
+    img-src      https://arthur-soulard.goatcounter.com  (envoi de secours)
+  Les visites en local (localhost, fichier ouvert) ne sont pas comptees.
+  Les mentions legales decrivent cet outil : les mettre a jour si on le change.
   ============================================================================
 -->
+<script data-goatcounter="https://arthur-soulard.goatcounter.com/count"
+        async src="https://gc.zgo.at/count.js"></script>
 
 <script>
   var barreOnglets = document.getElementById('tabBar');
