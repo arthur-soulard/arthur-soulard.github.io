@@ -468,6 +468,18 @@
     background: linear-gradient(90deg, var(--accent-clair), var(--accent-dark));
   }
 
+  /* Formule mise en avant : la seance de deux heures */
+  .tarif-card { padding-top: 2.7rem; }
+  .tarif-vedette { border: 2px solid var(--accent-dark); }
+  .tarif-vedette:hover { border-color: var(--accent-dark); }
+  .tarif-badge {
+    position: absolute; top: .7rem; left: 50%; transform: translateX(-50%);
+    background: var(--accent-dark); color: #fff;
+    font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+    padding: .22rem .7rem; border-radius: 999px; white-space: nowrap;
+  }
+  .tarif-econo { font-weight: 600; color: var(--accent-dark); }
+
   /* ETAPES */
   .etapes { padding: 2.8rem 0 .4rem; }
   .etapes-grid {
@@ -1061,10 +1073,11 @@
           <div class="tarif-prix">39&nbsp;€</div>
           <div class="tarif-detail">Visio ou présentiel</div>
         </div>
-        <div class="tarif-card">
+        <div class="tarif-card tarif-vedette">
+          <span class="tarif-badge">Le plus choisi</span>
           <div class="tarif-titre">Séance de deux heures</div>
           <div class="tarif-prix">50&nbsp;€</div>
-          <div class="tarif-detail">Visio ou présentiel</div>
+          <div class="tarif-detail">Visio ou présentiel<br><span class="tarif-econo">soit 25&nbsp;€ de l'heure</span></div>
         </div>
       </div>
     </div>
