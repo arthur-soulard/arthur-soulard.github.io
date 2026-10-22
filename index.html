@@ -467,11 +467,6 @@
       border-color: rgba(79,179,172,.55);
     }
   }
-  .tarif-card { position: relative; overflow: hidden; }
-  .tarif-card::before {
-    content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px;
-    background: linear-gradient(90deg, var(--accent-clair), var(--accent-dark));
-  }
 
 
   /* ETAPES */
@@ -579,7 +574,7 @@
     body { background: #fff; color: #000; font-size: 11pt; line-height: 1.45; }
     .hero, footer { background: #fff !important; color: #000 !important; }
     .hero::after, .hero-photo, .saut-contenu, .tab-bar-wrap, .cta-row,
-    .modal-overlay, .cta-flottant, .tarif-card::before,
+    .modal-overlay, .cta-flottant,
     .faq-item summary::after { display: none !important; }
     .eyebrow { color: #000; }
     .stats { margin-top: 0; padding: 0; }
