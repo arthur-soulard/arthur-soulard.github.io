@@ -5,20 +5,20 @@
 <meta name="format-detection" content="telephone=no">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Arthur Soulard — Cours particuliers Maths & Physique-Chimie</title>
-<meta name="description" content="Cours particuliers de Maths et Physique-Chimie, du collège à la terminale. Visio toute l'année, présentiel en Vendée et à Toulon. Dès 27 €/h net.">
+<meta name="description" content="Cours particuliers de Maths et Physique-Chimie, du collège à la terminale. Visio toute l'année, présentiel en Vendée et à Toulon. 25 €/h net, tarif unique.">
 <meta property="og:title" content="Arthur Soulard — Cours particuliers Maths & Physique-Chimie">
-<meta property="og:description" content="Cours particuliers de Maths et Physique-Chimie, du collège à la terminale. Dès 27 €/h net.">
+<meta property="og:description" content="Cours particuliers de Maths et Physique-Chimie, du collège à la terminale. 25 €/h net, tarif unique.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://arthur-soulard.github.io/">
-<meta property="og:image" content="https://arthur-soulard.github.io/img/og-cover.jpg?v=2">
+<meta property="og:image" content="https://arthur-soulard.github.io/img/og-cover.jpg?v=3">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Arthur Soulard — cours particuliers de maths et physique-chimie">
 <meta property="og:locale" content="fr_FR">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Arthur Soulard — Cours particuliers Maths & Physique-Chimie">
-<meta name="twitter:description" content="Cours particuliers de Maths et Physique-Chimie, du collège à la terminale. Dès 27 €/h net.">
-<meta name="twitter:image" content="https://arthur-soulard.github.io/img/og-cover.jpg?v=2">
+<meta name="twitter:description" content="Cours particuliers de Maths et Physique-Chimie, du collège à la terminale. 25 €/h net, tarif unique.">
+<meta name="twitter:image" content="https://arthur-soulard.github.io/img/og-cover.jpg?v=3">
 <meta name="robots" content="index, follow, noimageindex, max-image-preview:none">
 <meta name="googlebot" content="index, follow, noimageindex, max-image-preview:none">
 <link rel="canonical" href="https://arthur-soulard.github.io/">
@@ -433,7 +433,7 @@
 
   /* TARIFS */
   .tarifs-grid {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;
+    display: grid; grid-template-columns: minmax(0, 24rem); justify-content: center;
   }
   .tarif-card {
     background: var(--blanc);
@@ -448,6 +448,11 @@
     color: var(--marine); margin: .3rem 0;
   }
   .tarif-detail { font-size: .8rem; color: var(--gris); }
+  .tarif-unite { font-family: "Inter", sans-serif; font-size: 1rem; font-weight: 600; color: var(--gris); }
+  .tarif-duree { list-style: none; margin: 1rem 0 0; padding: .9rem 0 0; border-top: 1px solid var(--gris-clair);
+    display: flex; justify-content: center; gap: 1.4rem; font-size: .88rem; color: var(--marine); font-weight: 600; }
+  .tarifs-cta { text-align: center; margin-top: 1.6rem; }
+  .tarif-duree span { display: block; font-weight: 500; font-size: .75rem; color: var(--gris); }
 
   /* ELEVATION : une ombre douce au repos, une ombre portee au survol.
      Les bordures plates cedent la place a de la profondeur. */
@@ -468,18 +473,6 @@
     background: linear-gradient(90deg, var(--accent-clair), var(--accent-dark));
   }
 
-  /* Formule mise en avant : la seance de deux heures */
-  .tarif-card { padding-top: 2.7rem; }
-  .tarif-vedette { border: 2px solid var(--accent-dark); }
-  .tarif-vedette:hover { border-color: var(--accent-dark); }
-  .tarif-badge {
-    position: absolute; top: .7rem; left: 50%; transform: translateX(-50%);
-    background: var(--accent-dark); color: #fff;
-    font-size: .72rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
-    padding: .22rem .7rem; border-radius: 999px; white-space: nowrap;
-  }
-  .tarifs-cta { text-align: center; margin-top: 1.6rem; }
-  .tarif-econo { font-weight: 600; color: var(--accent-dark); }
 
   /* ETAPES */
   .etapes { padding: 2.8rem 0 .4rem; }
@@ -680,8 +673,8 @@
       "url": "https://arthur-soulard.github.io/",
       "telephone": "+33749055015",
       "email": "arthursoulard1312@gmail.com",
-      "image": "https://arthur-soulard.github.io/img/og-cover.jpg?v=2",
-      "priceRange": "27-50 EUR",
+      "image": "https://arthur-soulard.github.io/img/og-cover.jpg?v=3",
+      "priceRange": "25 EUR",
       "currenciesAccepted": "EUR",
       "paymentAccepted": "CESU, Virement bancaire, Espèces",
       "founder": {
@@ -724,29 +717,17 @@
       "makesOffer": [
         {
           "@type": "Offer",
-          "name": "Séance d'une heure",
-          "price": "27",
+          "name": "Cours particulier, tarif unique de l'heure",
+          "price": "25",
           "priceCurrency": "EUR",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "25",
+            "priceCurrency": "EUR",
+            "unitCode": "HUR"
+          },
           "availability": "https://schema.org/InStock",
-          "description": "Cours individuel d'une heure, en visio ou en présentiel.",
-          "url": "https://arthur-soulard.github.io/"
-        },
-        {
-          "@type": "Offer",
-          "name": "Séance d'une heure trente",
-          "price": "39",
-          "priceCurrency": "EUR",
-          "availability": "https://schema.org/InStock",
-          "description": "Cours individuel d'une heure trente, en visio ou en présentiel.",
-          "url": "https://arthur-soulard.github.io/"
-        },
-        {
-          "@type": "Offer",
-          "name": "Séance de deux heures",
-          "price": "50",
-          "priceCurrency": "EUR",
-          "availability": "https://schema.org/InStock",
-          "description": "Cours individuel de deux heures, en visio ou en présentiel.",
+          "description": "Cours individuel en visio ou en présentiel. Tarif unique de 25 € net de l'heure, quelle que soit la durée de la séance.",
           "url": "https://arthur-soulard.github.io/"
         }
       ]
@@ -817,29 +798,17 @@
       "offers": [
         {
           "@type": "Offer",
-          "name": "Séance d'une heure",
-          "price": "27",
+          "name": "Cours particulier, tarif unique de l'heure",
+          "price": "25",
           "priceCurrency": "EUR",
+          "priceSpecification": {
+            "@type": "UnitPriceSpecification",
+            "price": "25",
+            "priceCurrency": "EUR",
+            "unitCode": "HUR"
+          },
           "availability": "https://schema.org/InStock",
-          "description": "Cours individuel d'une heure, en visio ou en présentiel.",
-          "url": "https://arthur-soulard.github.io/"
-        },
-        {
-          "@type": "Offer",
-          "name": "Séance d'une heure trente",
-          "price": "39",
-          "priceCurrency": "EUR",
-          "availability": "https://schema.org/InStock",
-          "description": "Cours individuel d'une heure trente, en visio ou en présentiel.",
-          "url": "https://arthur-soulard.github.io/"
-        },
-        {
-          "@type": "Offer",
-          "name": "Séance de deux heures",
-          "price": "50",
-          "priceCurrency": "EUR",
-          "availability": "https://schema.org/InStock",
-          "description": "Cours individuel de deux heures, en visio ou en présentiel.",
+          "description": "Cours individuel en visio ou en présentiel. Tarif unique de 25 € net de l'heure, quelle que soit la durée de la séance.",
           "url": "https://arthur-soulard.github.io/"
         }
       ]
@@ -878,7 +847,7 @@
           "name": "Combien coûte une séance ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "27 € net pour une heure, 39 € net pour une heure trente et 50 € net pour deux heures. Le tarif est le même en visio et en présentiel, et il s'agit toujours d'un cours individuel. Ces tarifs sont nets : je suis rémunéré via le CESU, vous déclarez ma rémunération et les cotisations sociales s'y ajoutent, calculées par l'Urssaf."
+            "text": "25 € net de l'heure, quelle que soit la durée de la séance : 25 € pour une heure, 37,50 € pour une heure trente et 50 € pour deux heures. Le tarif est le même en visio et en présentiel, et il s'agit toujours d'un cours individuel. Ce tarif est net : je suis rémunéré via le CESU, vous déclarez ma rémunération et les cotisations sociales s'y ajoutent, calculées par l'Urssaf."
           }
         },
         {
@@ -936,8 +905,8 @@
 <div class="stats">
   <div class="stats-inner">
     <div>
-      <div class="stat-num">27&nbsp;€</div>
-      <div class="stat-label">Tarif de départ / h, net</div>
+      <div class="stat-num">25&nbsp;€</div>
+      <div class="stat-label">Tarif unique / h, net</div>
     </div>
     <div>
       <div class="stat-num">6ᵉ → Terminale</div>
@@ -1060,25 +1029,19 @@
     <div class="tab-panel" id="panel-tarifs" role="tabpanel" aria-labelledby="tab-tarifs" tabindex="0">
       <div class="section-head">
         <span class="tag">Prix</span>
-        <h2>Tarifs</h2>
-        <p>Cours individuel, en visio ou en présentiel. Tarifs nets.</p>
+        <h2>Tarif</h2>
+        <p>Cours individuel, en visio ou en présentiel. Tarif net.</p>
       </div>
       <div class="tarifs-grid">
         <div class="tarif-card">
-          <div class="tarif-titre">Séance d'une heure</div>
-          <div class="tarif-prix">27&nbsp;€</div>
-          <div class="tarif-detail">Visio ou présentiel</div>
-        </div>
-        <div class="tarif-card">
-          <div class="tarif-titre">Séance d'une heure trente</div>
-          <div class="tarif-prix">39&nbsp;€</div>
-          <div class="tarif-detail">Visio ou présentiel</div>
-        </div>
-        <div class="tarif-card tarif-vedette">
-          <span class="tarif-badge">Le plus choisi</span>
-          <div class="tarif-titre">Séance de deux heures</div>
-          <div class="tarif-prix">50&nbsp;€</div>
-          <div class="tarif-detail">Visio ou présentiel<br><span class="tarif-econo">soit 25&nbsp;€ de l'heure</span></div>
+          <div class="tarif-titre">Tarif unique</div>
+          <div class="tarif-prix">25&nbsp;€ <span class="tarif-unite">/&nbsp;heure</span></div>
+          <div class="tarif-detail">Visio ou présentiel, quelle que soit la durée de la séance</div>
+          <ul class="tarif-duree">
+            <li><span>1&nbsp;h</span> 25&nbsp;€</li>
+            <li><span>1&nbsp;h&nbsp;30</span> 37,50&nbsp;€</li>
+            <li><span>2&nbsp;h</span> 50&nbsp;€</li>
+          </ul>
         </div>
       </div>
       <p class="tarifs-cta"><button type="button" class="btn btn-primary" onclick="ouvrirContact()">Me contacter pour réserver</button></p>
@@ -1130,7 +1093,7 @@
       </details>
       <details class="faq-item reveal">
         <summary>Combien coûte une séance&nbsp;?</summary>
-        <div class="faq-reponse"><p>27&nbsp;€ net pour une heure, 39&nbsp;€ net pour une heure trente et 50&nbsp;€ net pour deux heures. Le tarif est le même en visio et en présentiel, et il s'agit toujours d'un cours individuel. Ces tarifs sont nets&nbsp;: je suis rémunéré via le CESU, vous déclarez ma rémunération et les cotisations sociales s'y ajoutent, calculées par l'Urssaf.</p></div>
+        <div class="faq-reponse"><p>25&nbsp;€ net de l'heure, quelle que soit la durée de la séance&nbsp;: 25&nbsp;€ pour une heure, 37,50&nbsp;€ pour une heure trente et 50&nbsp;€ pour deux heures. Le tarif est le même en visio et en présentiel, et il s'agit toujours d'un cours individuel. Ce tarif est net&nbsp;: je suis rémunéré via le CESU, vous déclarez ma rémunération et les cotisations sociales s'y ajoutent, calculées par l'Urssaf.</p></div>
       </details>
       <details class="faq-item reveal">
         <summary>Comment se passe le règlement&nbsp;?</summary>
