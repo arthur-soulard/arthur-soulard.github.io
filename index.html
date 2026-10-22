@@ -442,17 +442,17 @@
     padding: 1.3rem 1.2rem;
     text-align: center;
   }
-  .tarif-titre { font-weight: 600; font-size: .95rem; color: var(--gris); }
+  .tarif-titre { font-weight: 700; font-size: .85rem; letter-spacing: .06em; text-transform: uppercase; color: var(--accent-dark); }
   .tarif-prix {
     font-family: "Fraunces", serif; font-size: 2.1rem; font-weight: 600;
-    color: var(--marine); margin: .3rem 0;
+    color: var(--accent-dark); margin: .3rem 0;
   }
   .tarif-detail { font-size: .8rem; color: var(--gris); }
-  .tarif-unite { font-family: "Inter", sans-serif; font-size: 1rem; font-weight: 600; color: var(--gris); }
+  .tarif-unite { font-family: "Inter", sans-serif; font-size: 1rem; font-weight: 600; color: var(--marine); }
   .tarif-duree { list-style: none; margin: 1rem 0 0; padding: .9rem 0 0; border-top: 1px solid var(--gris-clair);
-    display: flex; justify-content: center; gap: 1.4rem; font-size: .88rem; color: var(--marine); font-weight: 600; }
+    display: flex; justify-content: center; gap: 1.4rem; font-size: .88rem; color: var(--accent-dark); font-weight: 700; }
   .tarifs-cta { text-align: center; margin-top: 1.6rem; }
-  .tarif-duree span { display: block; font-weight: 500; font-size: .75rem; color: var(--gris); }
+  .tarif-duree span { display: block; font-weight: 600; font-size: .75rem; color: var(--marine); }
 
   /* ELEVATION : une ombre douce au repos, une ombre portee au survol.
      Les bordures plates cedent la place a de la profondeur. */
@@ -888,7 +888,7 @@
       <p class="lead">Étudiant en école d'ingénieur à SeaTech Toulon, je donne des cours particuliers de mathématiques et de physique-chimie du collège à la terminale. À domicile en Vendée, autour de Treize-Septiers et Montaigu, à Toulon le week-end, ou en visio partout en France toute l'année.</p>
       <div class="cta-row">
         <button type="button" class="btn btn-primary" onclick="ouvrirContact()">Me contacter</button>
-        <button type="button" class="btn btn-ghost" onclick="allerAuxTarifs()">Voir les tarifs</button>
+        <button type="button" class="btn btn-ghost" onclick="allerAuxTarifs()">Voir le tarif</button>
       </div>
     </div>
     <div class="hero-photo">
@@ -951,7 +951,7 @@
         <button type="button" class="tab-btn" id="tab-apropos" data-tab="apropos" role="tab" aria-selected="false" aria-controls="panel-apropos" tabindex="-1">Qui suis-je</button>
         <button type="button" class="tab-btn" id="tab-niveaux" data-tab="niveaux" role="tab" aria-selected="false" aria-controls="panel-niveaux" tabindex="-1">Niveaux</button>
         <button type="button" class="tab-btn" id="tab-organisation" data-tab="organisation" role="tab" aria-selected="false" aria-controls="panel-organisation" tabindex="-1">Organisation</button>
-        <button type="button" class="tab-btn" id="tab-tarifs" data-tab="tarifs" role="tab" aria-selected="false" aria-controls="panel-tarifs" tabindex="-1">Tarifs</button>
+        <button type="button" class="tab-btn" id="tab-tarifs" data-tab="tarifs" role="tab" aria-selected="false" aria-controls="panel-tarifs" tabindex="-1">Tarif</button>
         <button type="button" class="tab-btn" id="tab-paiement" data-tab="paiement" role="tab" aria-selected="false" aria-controls="panel-paiement" tabindex="-1">Paiement</button>
       </div>
       <button type="button" class="tab-arrow tab-arrow-prev" aria-label="Onglets précédents">&#8249;</button>
