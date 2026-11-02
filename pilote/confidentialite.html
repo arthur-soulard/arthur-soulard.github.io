@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pilote, confidentialité — Arthur Soulard</title>
+<meta name="description" content="Politique de confidentialité de Pilote, application de suivi personnel 100 % locale pour Windows et Mac.">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://arthur-soulard.github.io/pilote/confidentialite.html">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<meta name="theme-color" content="#0d2438">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'self'; base-uri 'self'; form-action 'none'; object-src 'none'">
+<link rel="preload" href="/fonts/inter-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/fraunces-latin-var.woff2" as="font" type="font/woff2" crossorigin>
+<style>
+  @font-face {
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400 700;
+    font-display: swap;
+    src: url("/fonts/inter-latin-var.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+  @font-face {
+    font-family: "Fraunces";
+    font-style: normal;
+    font-weight: 500 600;
+    font-display: swap;
+    src: url("/fonts/fraunces-latin-var.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+  :root {
+    --marine: #0d2438;
+    --accent: #4fb3ac;
+    --accent-dark: #297c77;
+    --creme: #f7f5f0;
+    --texte: #1c2733;
+    --gris: #5c6b7a;
+    --gris-clair: #e4e8ec;
+    --blanc: #ffffff;
+    --radius: 14px;
+    --ombre-douce: 0 1px 2px rgba(13,36,56,.04), 0 4px 12px rgba(13,36,56,.06);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: "Inter", sans-serif;
+    background: var(--creme);
+    color: var(--texte);
+    line-height: 1.65;
+  }
+
+  a { color: var(--accent-dark); }
+
+  :focus-visible {
+    outline: 3px solid var(--marine);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+  .page-header :focus-visible, footer :focus-visible { outline-color: var(--blanc); }
+
+  .wrap { max-width: 760px; margin: 0 auto; padding: 0 1.4rem; }
+
+  .page-header {
+    background: var(--marine);
+    color: var(--blanc);
+    padding: 2.6rem 0 2.2rem;
+  }
+  .page-header .surtitre {
+    display: block;
+    color: var(--accent);
+    font-size: .85rem; font-weight: 600;
+    margin-bottom: .4rem;
+  }
+  .page-header h1 {
+    font-family: "Fraunces", serif; font-weight: 600;
+    font-size: clamp(1.7rem, 4vw, 2.2rem); line-height: 1.2;
+  }
+  .page-header .maj { color: rgba(255,255,255,.7); font-size: .88rem; margin-top: .5rem; }
+
+  main { padding: 2.6rem 0 3.5rem; }
+
+  section + section { margin-top: 1rem; }
+  .bloc {
+    background: var(--blanc);
+    border: 1px solid var(--gris-clair);
+    border-radius: var(--radius);
+    padding: 1.3rem 1.5rem;
+    box-shadow: var(--ombre-douce);
+  }
+  .bloc h2 {
+    font-family: "Fraunces", serif; font-weight: 600;
+    font-size: 1.15rem; color: var(--marine);
+    margin-bottom: .6rem;
+  }
+  .bloc p + p { margin-top: .7rem; }
+  .bloc ul { margin: .5rem 0 0 1.1rem; }
+  .bloc li { margin-bottom: .3rem; }
+  .bloc .note { color: var(--gris); font-size: .88rem; }
+  .bloc code { font-size: .88rem; background: var(--creme); padding: .05rem .3rem; border-radius: 4px; }
+
+  footer {
+    background: var(--marine); color: rgba(255,255,255,.58);
+    padding: 1.6rem 0; text-align: center; font-size: .78rem;
+  }
+  footer a { color: rgba(255,255,255,.78); text-decoration: none; padding: .5rem; display: inline-block; }
+  footer a:hover { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<header class="page-header">
+  <div class="wrap">
+    <span class="surtitre">Pilote, application pour Windows et Mac</span>
+    <h1>Politique de confidentialité</h1>
+    <p class="maj">Mise à jour le 2 novembre 2026</p>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <section class="bloc">
+      <h2>En résumé</h2>
+      <p>Pilote ne collecte aucune donnée. Il n'a ni compte, ni serveur, ni publicité, ni mesure d'audience&nbsp;: tout ce que vous saisissez reste sur votre ordinateur, et personne d'autre que vous n'y a accès, pas même l'auteur de l'application.</p>
+    </section>
+
+    <section class="bloc">
+      <h2>Où vivent vos données</h2>
+      <p>Vos comptes, vos opérations, vos séances de sport, vos mesures de santé et vos réglages sont enregistrés dans des fichiers sur votre ordinateur&nbsp;:</p>
+      <ul>
+        <li>version Microsoft Store&nbsp;: <code>C:\Users\&lt;votre nom&gt;\Pilote\Donnees</code>&nbsp;;</li>
+        <li>version téléchargée sur GitHub&nbsp;: le dossier <code>Donnees</code> à côté de l'application&nbsp;;</li>
+        <li>Mac&nbsp;: <code>~/Library/Application Support/Pilote/Donnees</code>.</li>
+      </ul>
+      <p>Ils ne sont envoyés nulle part. Désinstaller Pilote ne les efface pas&nbsp;: vous pouvez les supprimer vous-même en effaçant ce dossier.</p>
+    </section>
+
+    <section class="bloc">
+      <h2>Ce que Pilote demande à Internet</h2>
+      <p>Pour afficher des informations publiques, Pilote interroge directement ces services depuis votre ordinateur&nbsp;:</p>
+      <ul>
+        <li><strong>Cours de bourse</strong>&nbsp;: Yahoo Finance et Euronext reçoivent les codes des titres dont vous suivez le cours (par exemple <code>WPEA.PA</code>), jamais vos montants ni vos quantités.</li>
+        <li><strong>Composition des ETF</strong>&nbsp;: justETF, iShares et Amundi reçoivent l'identifiant (ISIN) des fonds concernés.</li>
+        <li><strong>Mises à jour</strong>&nbsp;: la version téléchargée sur GitHub vérifie sur GitHub s'il existe une nouvelle version. La version Microsoft Store est mise à jour par le Store.</li>
+      </ul>
+      <p class="note">Comme pour toute page web, ces services voient l'adresse IP de votre connexion. Pilote ne leur transmet aucun identifiant ni aucune information personnelle.</p>
+    </section>
+
+    <section class="bloc">
+      <h2>Deux connexions que vous choisissez</h2>
+      <p>Ces deux fonctions sont éteintes tant que vous ne les réglez pas vous-même&nbsp;:</p>
+      <ul>
+        <li><strong>Actus (Gmail)</strong>&nbsp;: Pilote lit la boîte Gmail que vous indiquez, pour afficher vos lettres d'information. Il ne l'utilise que pour la lire et n'y envoie rien.</li>
+        <li><strong>Agenda (iCloud)</strong>&nbsp;: Pilote écrit dans votre agenda iCloud les notes et rappels que vous lui demandez, et lit vos autres agendas pour les afficher sans les modifier. Si vous réglez la notification «&nbsp;Bilan de la semaine&nbsp;», elle contient un résumé de vos comptes, de vos dépenses et de votre poids.</li>
+      </ul>
+      <p>Les codes d'accès de ces services sont chiffrés sur votre ordinateur par le système (Windows ou le Trousseau du Mac). Les échanges se font directement entre votre ordinateur et Google ou Apple, selon leurs propres règles de confidentialité.</p>
+    </section>
+
+    <section class="bloc">
+      <h2>Sauvegardes</h2>
+      <p>Si vous activez la sauvegarde, Pilote copie vos fichiers sur la clé USB ou dans le dossier que vous choisissez. Si ce dossier est synchronisé par un service en ligne (Google Drive, iCloud Drive, OneDrive), c'est ce service, et non Pilote, qui envoie les fichiers.</p>
+    </section>
+
+    <section class="bloc">
+      <h2>Contact</h2>
+      <p>Pour toute question sur cette politique, écrivez à <a href="mailto:arthursoulard1312@gmail.com">arthursoulard1312@gmail.com</a>.</p>
+      <p class="note">Pilote est un logiciel libre&nbsp;: son code est public sur <a href="https://github.com/arthur-soulard/arthurpilote.github.com" target="_blank" rel="noopener noreferrer">GitHub</a>, où chacun peut vérifier ce qu'il envoie et à qui.</p>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <a href="/mentions-legales.html">Mentions légales</a>
+  </div>
+</footer>
+
+</body>
+</html>
