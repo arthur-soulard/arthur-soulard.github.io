@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="format-detection" content="telephone=no">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Arthur Soulard — Cours particuliers Maths & Physique-Chimie</title>
-<meta name="description" content="Cours particuliers de Maths et Physique-Chimie, du collège à la terminale. Visio toute l'année, présentiel en Vendée et à Toulon. 25 €/h net, tarif unique.">
+<title>Cours particuliers maths et physique-chimie — Toulon et Vendée</title>
+<meta name="description" content="Maths et physique-chimie du collège à la terminale, à Toulon et La Garde, en Vendée autour de Montaigu, et en visio partout en France. 25 € net de l'heure.">
 <meta property="og:title" content="Arthur Soulard — Cours particuliers Maths & Physique-Chimie">
 <meta property="og:description" content="Cours particuliers de Maths et Physique-Chimie, du collège à la terminale. 25 €/h net, tarif unique.">
 <meta property="og:type" content="website">
@@ -393,6 +393,20 @@
     text-align: center;
   }
   .card h3 { color: var(--marine); font-size: 1.02rem; font-weight: 700; margin-bottom: .35rem; }
+  .cards-grid.cols-2-4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 1000px) {
+    .cards-grid.cols-2-4 { grid-template-columns: repeat(2, 1fr); }
+  }
+  .card-lien {
+    display: block; text-decoration: none; color: inherit;
+    transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+  }
+  .card-lien:hover {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+    box-shadow: var(--ombre-douce);
+  }
+  .card-lien h3 { text-decoration: underline; text-decoration-color: var(--accent); text-underline-offset: 3px; }
   .card p { color: var(--gris); font-size: .87rem; }
   .card h3.matiere-titre {
     font-family: "Fraunces", serif;
@@ -602,7 +616,7 @@
   }
 
   @media (max-width: 760px) {
-    .cards-grid, .cards-grid.cols-3 { grid-template-columns: 1fr; }
+    .cards-grid, .cards-grid.cols-3, .cards-grid.cols-2-4 { grid-template-columns: 1fr; }
     .tarifs-grid { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: 1fr; gap: 1.6rem; }
     /* Le texte d'accroche etant plus long, on resserre l'en-tete pour que
@@ -681,6 +695,38 @@
       "areaServed": [
         {
           "@type": "City",
+          "name": "La Garde",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Var"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "La Valette-du-Var",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Var"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Le Pradet",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Var"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "La Crau",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Var"
+          }
+        },
+        {
+          "@type": "City",
           "name": "Treize-Septiers",
           "containedInPlace": {
             "@type": "AdministrativeArea",
@@ -732,12 +778,44 @@
       "@id": "https://arthur-soulard.github.io/#service",
       "name": "Cours particuliers de Maths et Physique-Chimie — Arthur Soulard",
       "serviceType": "Soutien scolaire et cours particuliers de mathématiques et de physique-chimie",
-      "description": "Cours particuliers de mathématiques et de physique-chimie, du collège à la terminale, en visio toute l'année ou en présentiel en Vendée et à Toulon.",
+      "description": "Cours particuliers de mathématiques et de physique-chimie, du collège à la terminale, en visio toute l'année ou en présentiel en Vendée, à Toulon et à La Garde.",
       "url": "https://arthur-soulard.github.io/",
       "provider": {
         "@id": "https://arthur-soulard.github.io/#activite"
       },
       "areaServed": [
+        {
+          "@type": "City",
+          "name": "La Garde",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Var"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "La Valette-du-Var",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Var"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "Le Pradet",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Var"
+          }
+        },
+        {
+          "@type": "City",
+          "name": "La Crau",
+          "containedInPlace": {
+            "@type": "AdministrativeArea",
+            "name": "Var"
+          }
+        },
         {
           "@type": "City",
           "name": "Treize-Septiers",
@@ -826,7 +904,7 @@
           "name": "Les cours ont-ils lieu à domicile ou en visio ?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Les deux. La visio est disponible toute l'année, partout en France. À domicile, je me déplace dans un rayon de 20 km autour de Treize-Septiers et Montaigu-Vendée pendant les vacances scolaires, et à Toulon et ses environs le week-end selon disponibilité."
+            "text": "Les deux. La visio est disponible toute l'année, partout en France. À domicile, je me déplace dans un rayon de 20 km autour de Treize-Septiers et Montaigu-Vendée pendant les vacances scolaires, et à Toulon, La Garde et leurs environs le week-end selon disponibilité."
           }
         },
         {
@@ -883,9 +961,9 @@
 <section class="hero">
   <div class="hero-inner">
     <div class="hero-text">
-      <span class="eyebrow">Cours particuliers de maths et de physique-chimie &middot; Vendée, Toulon et&nbsp;visio</span>
+      <span class="eyebrow">Cours particuliers de maths et de physique-chimie &middot; Vendée, Toulon, La Garde et&nbsp;visio</span>
       <h1>Comprendre les maths et la physique-chimie, <em>pour de bon</em>.</h1>
-      <p class="lead">Étudiant en école d'ingénieur à SeaTech Toulon, je donne des cours particuliers de mathématiques et de physique-chimie du collège à la terminale. À domicile en Vendée, autour de Treize-Septiers et Montaigu, à Toulon le week-end, ou en visio partout en France toute l'année.</p>
+      <p class="lead">Étudiant en école d'ingénieur à SeaTech Toulon, je donne des cours particuliers de mathématiques et de physique-chimie du collège à la terminale. À domicile en Vendée, autour de Treize-Septiers et Montaigu, à Toulon et La Garde le week-end, ou en visio partout en France toute l'année.</p>
       <div class="cta-row">
         <button type="button" class="btn btn-primary" onclick="ouvrirContact()" data-goatcounter-click="contact-ouvre-haut">Me contacter</button>
         <button type="button" class="btn btn-ghost" onclick="allerAuxTarifs()">Voir le tarif</button>
@@ -1067,6 +1145,33 @@
   </div>
 </section>
 
+<section class="intro" aria-labelledby="titre-pages">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="tag">Selon votre situation</span>
+      <h2 id="titre-pages">Où et comment je donne cours</h2>
+    </div>
+    <div class="cards-grid cols-2-4">
+      <a class="card card-lien" href="cours-maths-physique-toulon.html" data-goatcounter-click="accueil-vers-toulon">
+        <h3>À Toulon et La Garde</h3>
+        <p>Cours à domicile le week-end, dans l'agglomération toulonnaise.</p>
+      </a>
+      <a class="card card-lien" href="soutien-scolaire-vendee.html" data-goatcounter-click="accueil-vers-vendee">
+        <h3>En Vendée</h3>
+        <p>Autour de Treize-Septiers et Montaigu, pendant les vacances scolaires.</p>
+      </a>
+      <a class="card card-lien" href="cours-particuliers-visio.html" data-goatcounter-click="accueil-vers-visio">
+        <h3>En visio</h3>
+        <p>Partout en France, toute l'année, au même tarif.</p>
+      </a>
+      <a class="card card-lien" href="preparation-bac-brevet.html" data-goatcounter-click="accueil-vers-examens">
+        <h3>Brevet et bac</h3>
+        <p>Ce qui tombe, comment on le rédige, et comment s'organiser sur l'année.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
 <section class="faq" id="faq" aria-labelledby="titre-faq">
   <div class="wrap">
     <div class="section-head">
@@ -1080,7 +1185,7 @@
       </details>
       <details class="faq-item reveal">
         <summary>Les cours ont-ils lieu à domicile ou en visio&nbsp;?</summary>
-        <div class="faq-reponse"><p>Les deux. La visio est disponible toute l'année, partout en France. À domicile, je me déplace dans un rayon de 20 km autour de Treize-Septiers et Montaigu-Vendée pendant les vacances scolaires, et à Toulon et ses environs le week-end selon disponibilité.</p></div>
+        <div class="faq-reponse"><p>Les deux. La visio est disponible toute l'année, partout en France. À domicile, je me déplace dans un rayon de 20 km autour de Treize-Septiers et Montaigu-Vendée pendant les vacances scolaires, et à Toulon, La Garde et leurs environs le week-end selon disponibilité.</p></div>
       </details>
       <details class="faq-item reveal">
         <summary>Comment se déroule un cours en visio&nbsp;?</summary>
@@ -1144,6 +1249,10 @@
       <div class="footer-col">
         <h4>Navigation</h4>
         <a href="#top">Accueil</a>
+        <a href="cours-maths-physique-toulon.html">Cours à Toulon et La Garde</a>
+        <a href="soutien-scolaire-vendee.html">Soutien scolaire en Vendée</a>
+        <a href="cours-particuliers-visio.html">Cours en visio</a>
+        <a href="preparation-bac-brevet.html">Brevet et bac</a>
         <a href="#faq">Questions fréquentes</a>
         <a href="mentions-legales.html">Mentions légales</a>
       </div>
