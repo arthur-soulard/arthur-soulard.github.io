@@ -887,7 +887,7 @@
       <h1>Comprendre les maths et la physique-chimie, <em>pour de bon</em>.</h1>
       <p class="lead">Étudiant en école d'ingénieur à SeaTech Toulon, je donne des cours particuliers de mathématiques et de physique-chimie du collège à la terminale. À domicile en Vendée, autour de Treize-Septiers et Montaigu, à Toulon le week-end, ou en visio partout en France toute l'année.</p>
       <div class="cta-row">
-        <button type="button" class="btn btn-primary" onclick="ouvrirContact()">Me contacter</button>
+        <button type="button" class="btn btn-primary" onclick="ouvrirContact()" data-goatcounter-click="contact-ouvre-haut">Me contacter</button>
         <button type="button" class="btn btn-ghost" onclick="allerAuxTarifs()">Voir le tarif</button>
       </div>
     </div>
@@ -947,12 +947,12 @@
   <div class="wrap">
     <div class="tab-bar-wrap" id="tabBarWrap">
       <div class="tab-bar" id="tabBar" role="tablist" aria-label="Sections de la page">
-        <button type="button" class="tab-btn active" id="tab-matieres" data-tab="matieres" role="tab" aria-selected="true" aria-controls="panel-matieres">Matières</button>
-        <button type="button" class="tab-btn" id="tab-apropos" data-tab="apropos" role="tab" aria-selected="false" aria-controls="panel-apropos" tabindex="-1">Qui suis-je</button>
-        <button type="button" class="tab-btn" id="tab-niveaux" data-tab="niveaux" role="tab" aria-selected="false" aria-controls="panel-niveaux" tabindex="-1">Niveaux</button>
-        <button type="button" class="tab-btn" id="tab-organisation" data-tab="organisation" role="tab" aria-selected="false" aria-controls="panel-organisation" tabindex="-1">Organisation</button>
-        <button type="button" class="tab-btn" id="tab-tarifs" data-tab="tarifs" role="tab" aria-selected="false" aria-controls="panel-tarifs" tabindex="-1">Tarif</button>
-        <button type="button" class="tab-btn" id="tab-paiement" data-tab="paiement" role="tab" aria-selected="false" aria-controls="panel-paiement" tabindex="-1">Paiement</button>
+        <button type="button" class="tab-btn active" id="tab-matieres" data-tab="matieres" data-goatcounter-click="onglet-matieres" role="tab" aria-selected="true" aria-controls="panel-matieres">Matières</button>
+        <button type="button" class="tab-btn" id="tab-apropos" data-tab="apropos" data-goatcounter-click="onglet-apropos" role="tab" aria-selected="false" aria-controls="panel-apropos" tabindex="-1">Qui suis-je</button>
+        <button type="button" class="tab-btn" id="tab-niveaux" data-tab="niveaux" data-goatcounter-click="onglet-niveaux" role="tab" aria-selected="false" aria-controls="panel-niveaux" tabindex="-1">Niveaux</button>
+        <button type="button" class="tab-btn" id="tab-organisation" data-tab="organisation" data-goatcounter-click="onglet-organisation" role="tab" aria-selected="false" aria-controls="panel-organisation" tabindex="-1">Organisation</button>
+        <button type="button" class="tab-btn" id="tab-tarifs" data-tab="tarifs" data-goatcounter-click="onglet-tarif" role="tab" aria-selected="false" aria-controls="panel-tarifs" tabindex="-1">Tarif</button>
+        <button type="button" class="tab-btn" id="tab-paiement" data-tab="paiement" data-goatcounter-click="onglet-paiement" role="tab" aria-selected="false" aria-controls="panel-paiement" tabindex="-1">Paiement</button>
       </div>
       <button type="button" class="tab-arrow tab-arrow-prev" aria-label="Onglets précédents">&#8249;</button>
       <button type="button" class="tab-arrow tab-arrow-next" aria-label="Onglets suivants">&#8250;</button>
@@ -1039,7 +1039,7 @@
           </ul>
         </div>
       </div>
-      <p class="tarifs-cta"><button type="button" class="btn btn-primary" onclick="ouvrirContact()">Me contacter pour réserver</button></p>
+      <p class="tarifs-cta"><button type="button" class="btn btn-primary" onclick="ouvrirContact()" data-goatcounter-click="contact-ouvre-tarif">Me contacter pour réserver</button></p>
     </div>
 
     <div class="tab-panel" id="panel-paiement" role="tabpanel" aria-labelledby="tab-paiement" tabindex="0">
@@ -1109,16 +1109,16 @@
     <h3 id="modalContactTitre">Me contacter</h3>
     <p class="modal-sub">Choisissez votre moyen de contact préféré.</p>
     <div class="modal-choices">
-      <a class="modal-choice" href="tel:+33749055015">
+      <a class="modal-choice" href="tel:+33749055015" data-goatcounter-click="contact-telephone">
         <span class="modal-icon" aria-hidden="true">TEL</span> Par téléphone
       </a>
-      <a class="modal-choice" href="https://wa.me/33749055015?text=Bonjour%20Arthur%2C%20je%20vous%20contacte%20au%20sujet%20de%20cours%20particuliers." target="_blank" rel="noopener noreferrer">
+      <a class="modal-choice" href="https://wa.me/33749055015?text=Bonjour%20Arthur%2C%20je%20vous%20contacte%20au%20sujet%20de%20cours%20particuliers." target="_blank" rel="noopener noreferrer" data-goatcounter-click="contact-whatsapp">
         <span class="modal-icon" aria-hidden="true">WA</span> Par WhatsApp
       </a>
-      <a class="modal-choice" href="mailto:arthursoulard1312@gmail.com?subject=Cours%20particuliers">
+      <a class="modal-choice" href="mailto:arthursoulard1312@gmail.com?subject=Cours%20particuliers" data-goatcounter-click="contact-email">
         <span class="modal-icon" aria-hidden="true">@</span> Par e-mail
       </a>
-      <a class="modal-choice" href="sms:+33749055015">
+      <a class="modal-choice" href="sms:+33749055015" data-goatcounter-click="contact-sms">
         <span class="modal-icon" aria-hidden="true">SMS</span> Par message
       </a>
     </div>
@@ -1126,7 +1126,7 @@
 </div>
 
 <div class="cta-flottant" id="ctaFlottant">
-  <button type="button" class="btn btn-primary" id="ctaFlottantBtn">Me contacter</button>
+  <button type="button" class="btn btn-primary" id="ctaFlottantBtn" data-goatcounter-click="contact-ouvre-flottant">Me contacter</button>
 </div>
 
 <footer id="contact">
@@ -1138,8 +1138,8 @@
       </div>
       <div class="footer-col">
         <h4>Contact</h4>
-        <a href="tel:+33749055015">07 49 05 50 15</a>
-        <a href="mailto:arthursoulard1312@gmail.com">arthursoulard1312@gmail.com</a>
+        <a href="tel:+33749055015" data-goatcounter-click="pied-telephone">07 49 05 50 15</a>
+        <a href="mailto:arthursoulard1312@gmail.com" data-goatcounter-click="pied-email">arthursoulard1312@gmail.com</a>
       </div>
       <div class="footer-col">
         <h4>Navigation</h4>
@@ -1164,6 +1164,12 @@
     connect-src  https://arthur-soulard.goatcounter.com  (envoi des visites)
     img-src      https://arthur-soulard.goatcounter.com  (envoi de secours)
   Les visites en local (localhost, fichier ouvert) ne sont pas comptees.
+  Les attributs data-goatcounter-click comptent aussi les clics (sans cookie) :
+    contact-ouvre-*  ouverture du panneau Me contacter (haut / tarif / flottant)
+    contact-*        moyen choisi (telephone, whatsapp, email, sms)
+    pied-*           contacts du pied de page
+    onglet-*         onglet ouvert dans la grande carte
+  Un clic repete dans la meme session (8 h) n'est compte qu'une fois.
   Les mentions legales decrivent cet outil : les mettre a jour si on le change.
   ============================================================================
 -->
